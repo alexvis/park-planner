@@ -48,7 +48,7 @@ cmdline = [
   "--color",
   "--config",
   WEBPACK_CONFIG
-  ] + ARGV
+] + ARGV
 
 Dir.chdir(APP_PATH) do
   exec newenv, *cmdline
