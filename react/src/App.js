@@ -5,13 +5,13 @@ import NavBar from '../components/NavBar'
 
 const App = (props) => {
   return(
-   <Router history={browserHistory}>
-     <Route path='/' component={NavBar} >
-       <IndexRoute component={}/>
-       <Route path='/' component={}/>
-       <Route path='/' component={}/>
-     </Route>
-   </Router>
+  //  <Router history={browserHistory}>
+  //    <Route path='/' component={NavBar} >
+  //      <IndexRoute component={}/>
+  //      <Route path='/' component={}/>
+  //      <Route path='/' component={}/>
+  //    </Route>
+  //  </Router>
  )
 }
 

@@ -1,4 +1,4 @@
-class UsersContrallor < ApplicationController
+class UsersController < ApplicationController
   def index
   end
 
@@ -8,13 +8,5 @@ class UsersContrallor < ApplicationController
   def show
   end
 
-  def delete
-  end
-
-  private
-
-  def
-
-  end
 
 end
