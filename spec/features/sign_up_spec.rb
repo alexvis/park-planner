@@ -13,11 +13,12 @@ feature 'sign up' , %Q{
     fill_in 'Last Name', with: 'Smith'
     fill_in 'Email', with: 'jon@smith.com'
     fill_in 'State', with: 'MA'
+    fill_in 'User Name', with: 'bill'
     fill_in 'user_password', with: 'password'
     fill_in 'Password Confirmation', with: 'password'
     click_button 'Sign Up'
 
-    expect(page).to have_content("You're in!")
+    expect(page).to have_content("Welcome to Park Planner!")
     expect(page).to have_content("Sign Out")
   end
 
@@ -40,7 +41,7 @@ feature 'sign up' , %Q{
 
     click_button 'Sign Up'
 
-    expect(page).to have_content("doesn't match")
+    expect(page).to have_content("confirmation doesn't match")
     expect(page).to_not have_content("Sign Out")
   end
 end
