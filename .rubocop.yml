@@ -263,7 +263,7 @@ UnderscorePrefixedVariableName:
 Void:
   Enabled: false
 
-Style/AlignParameters:
+Layout/AlignParameters:
   EnforcedStyle: with_fixed_indentation
 
 Style/SymbolProc:
