@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170719145520) do
+ActiveRecord::Schema.define(version: 20170719181601) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,12 +21,12 @@ ActiveRecord::Schema.define(version: 20170719145520) do
     t.string "state", null: false
     t.string "img_url"
     t.string "link_url", null: false
-    t.integer "avg_rating"
-    t.integer "dog_friendly_avg_rating"
-    t.integer "camping_avg_rating"
-    t.integer "playground_avg_rating"
-    t.integer "hiking_avg_rating"
-    t.integer "scenery_avg_rating"
+    t.float "avg_rating"
+    t.float "dog_friendly_avg_rating"
+    t.float "camping_avg_rating"
+    t.float "playground_avg_rating"
+    t.float "hiking_avg_rating"
+    t.float "scenery_avg_rating"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
