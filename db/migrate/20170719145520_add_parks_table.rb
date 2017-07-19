@@ -6,12 +6,12 @@ class AddParksTable < ActiveRecord::Migration[5.1]
       t.string :state, null: false
       t.string :img_url
       t.string :link_url, null: false
-      t.integer :avg_rating, null: false, default: 0
-      t.integer :dog_friendly_avg_rating, null: false, default: 0
-      t.integer :camping_avg_rating, null: false, default: 0
-      t.integer :playground_avg_rating, null: false, default: 0
-      t.integer :hiking_avg_rating, null: false, default: 0
-      t.integer :scenery_avg_rating, null: false, default: 0
+      t.integer :avg_rating
+      t.integer :dog_friendly_avg_rating
+      t.integer :camping_avg_rating
+      t.integer :playground_avg_rating
+      t.integer :hiking_avg_rating
+      t.integer :scenery_avg_rating
 
       t.timestamps
     end

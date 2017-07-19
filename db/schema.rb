@@ -21,12 +21,12 @@ ActiveRecord::Schema.define(version: 20170719145520) do
     t.string "state", null: false
     t.string "img_url"
     t.string "link_url", null: false
-    t.integer "avg_rating", default: 0, null: false
-    t.integer "dog_friendly_avg_rating", default: 0, null: false
-    t.integer "camping_avg_rating", default: 0, null: false
-    t.integer "playground_avg_rating", default: 0, null: false
-    t.integer "hiking_avg_rating", default: 0, null: false
-    t.integer "scenery_avg_rating", default: 0, null: false
+    t.integer "avg_rating"
+    t.integer "dog_friendly_avg_rating"
+    t.integer "camping_avg_rating"
+    t.integer "playground_avg_rating"
+    t.integer "hiking_avg_rating"
+    t.integer "scenery_avg_rating"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
