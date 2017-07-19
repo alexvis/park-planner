@@ -1,9 +1,7 @@
 require 'rails_helper'
 
 feature 'sign up' , %Q{
-  As an unathenticated user
-  I want to sign up
-  So that I can plan my parks
+
 } do
 
   scenario 'specifying valid and required information' do
