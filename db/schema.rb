@@ -10,10 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170718201611) do
+ActiveRecord::Schema.define(version: 20170719145520) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "parks", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "description"
+    t.string "state", null: false
+    t.string "img_url"
+    t.string "link_url", null: false
+    t.integer "avg_rating", default: 0, null: false
+    t.integer "dog_friendly_avg_rating", default: 0, null: false
+    t.integer "camping_avg_rating", default: 0, null: false
+    t.integer "playground_avg_rating", default: 0, null: false
+    t.integer "hiking_avg_rating", default: 0, null: false
+    t.integer "scenery_avg_rating", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
