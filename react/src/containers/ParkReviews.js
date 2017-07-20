@@ -12,16 +12,18 @@ class ParkReviews extends React.Component {
 
   render() {
 
-    let reviews = this.state.ratings.map(review) => {
+    let reviews = this.state.ratings.map(review => {
       <ReviewTile
 	key={review.id}
 	body={review.body}
 	/>
-    }
+    })
 
     return(
-      <NewReviewForm />
-      {reviews}
+      <div>
+	<NewReviewForm />
+	{reviews}
+      </div>
     )
   }
 }

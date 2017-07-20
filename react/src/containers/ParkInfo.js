@@ -20,20 +20,22 @@ class ParkInfo extends React.Component {
   // }
 
   render() {
-    debugger
-    let ratings = this.state.ratings.map(rating) => {
+
+    let ratings = this.state.ratings.map(rating => {
         <ParkRatingTile
-	         key={rating.name}
-  	       name={rating.name}
-  	       value={rating.value}
+	  key={rating.name}
+	  name={rating.name}
+	  value={rating.value}
         />
-        <Image
-          park_image={park_images.}
-        />
-    }
+    })
 
     return(
-      {ratings}
+      <div>
+	<Image
+	  park_image={park_images}
+	/>
+	{ratings}
+      </div>
     )
   }
 }

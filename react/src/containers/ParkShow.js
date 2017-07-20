@@ -1,7 +1,7 @@
 import React from 'react'
 import ParkInfo from './ParkInfo'
 import ParkReviews from './ParkReviews'
-import FollowButton from './FollowButton'
+import FollowButton from '../components/FollowButton'
 
 class ParkShow extends React.Component {
   constructor(props) {
@@ -23,8 +23,14 @@ class ParkShow extends React.Component {
 
     return(
       <div>
-      <h1>Hello from parkShow.js</h1>
-    </div>
+	<FollowButton />
+	<ParkInfo
+	  ratings={ratings}
+	/>
+
+	<ParkReviews
+	/>
+      </div>
     )
   }
 }

@@ -9,8 +9,10 @@ class RatingTile extends React.Component {
 
   render() {
     return(
-      <p>{this.props.name}</p>
-      <p>{this.props.value}</p>
+      <div>
+	<p>{this.props.name}</p>
+	<p>{this.props.value}</p>
+      </div>
     )
   }
 }
