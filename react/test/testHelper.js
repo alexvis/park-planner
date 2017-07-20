@@ -24,4 +24,4 @@ requireAll(require.context('./', true, /^((?!testHelper).)*\.jsx?$/));
 requireAll(require.context('../src/', true, /^((?!main).)*\.jsx?$/));
 
 // output to the browser's console when the tests run
-console.info(`TESTS RAN AT ${new Date().toLocaleTimeString()}`);
+console.info('TESTS RAN AT ' + new Date().toLocaleTimeString());
