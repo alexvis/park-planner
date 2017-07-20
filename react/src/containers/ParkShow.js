@@ -22,13 +22,9 @@ class ParkShow extends React.Component {
     ]
 
     return(
-      <FollowButton />
-      <ParkInfo
-	ratings={ratings}
-      />
-
-      <ParkReviews
-      />
+      <div>
+      <h1>Hello from parkShow.js</h1>
+    </div>
     )
   }
 }

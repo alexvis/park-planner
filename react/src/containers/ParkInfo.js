@@ -5,7 +5,7 @@ class ParkInfo extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      img = null,
+      img: null,
       ratings: [],
       park_images: []
     }
@@ -20,7 +20,7 @@ class ParkInfo extends React.Component {
   // }
 
   render() {
-
+    debugger
     let ratings = this.state.ratings.map(rating) => {
         <ParkRatingTile
 	         key={rating.name}
