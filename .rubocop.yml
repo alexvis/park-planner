@@ -266,7 +266,7 @@ Void:
 Layout/AlignParameters:
   EnforcedStyle: with_fixed_indentation
 
-Layout/SymbolProc:
+Style/SymbolProc:
   Enabled: false
 
 Layout/MultilineOperationIndentation:
