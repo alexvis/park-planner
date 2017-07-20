@@ -16,9 +16,15 @@ class ParkShow extends React.Component {
   }
 
   render() {
+    let ratings = [
+      {name: "avg_rating",  value: park.avg_rating},
+      {name: "dog_friendly_avg_rating",  value: park.dog_friendly_avg_rating}
+    ] 
+
     return(
       <FollowButton />
       <ParkInfo
+	ratings={ratings}
       />
 
       <ParkReviews
