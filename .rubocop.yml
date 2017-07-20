@@ -269,10 +269,10 @@ Layout/AlignParameters:
 Style/SymbolProc:
   Enabled: false
 
-Style/MultilineOperationIndentation:
+Layout/MultilineOperationIndentation:
   EnforcedStyle: indented
 
-Style/EmptyLinesAroundBlockBody:
+Layout/EmptyLinesAroundBlockBody:
   Enabled: false
 
 Style/UnneededPercentQ:
