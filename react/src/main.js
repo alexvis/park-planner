@@ -1,11 +1,12 @@
 import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ParkShow from './containers/ParkShow';
+import App from './App';
+
 
 $(function() {
   ReactDOM.render(
-    <ParkShow />,
+    <App />,
     document.getElementById('app')
   );
 });

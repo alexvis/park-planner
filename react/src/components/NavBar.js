@@ -5,6 +5,8 @@ import React from 'react'
 const NavBar = (props) => {
   return(
     <div>
+      <h1>NavBar</h1>
+      {props.children}
     </div>
  )
 }
