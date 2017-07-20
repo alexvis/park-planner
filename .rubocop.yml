@@ -275,7 +275,7 @@ Layout/MultilineOperationIndentation:
 Layout/EmptyLinesAroundBlockBody:
   Enabled: false
 
-Layout/UnneededPercentQ:
+Style/UnneededPercentQ:
   Enabled: false
 
 Metrics/AbcSize:
