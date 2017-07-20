@@ -1,6 +1,7 @@
 AllCops:
   Exclude:
     - db/schema.rb
+    - react
   #DisplayCopNames: true
 
 AccessorMethodName:
@@ -262,7 +263,7 @@ UnderscorePrefixedVariableName:
 Void:
   Enabled: false
 
-Style/AlignParameters:
+Layout/AlignParameters:
   EnforcedStyle: with_fixed_indentation
 
 Style/SymbolProc:
