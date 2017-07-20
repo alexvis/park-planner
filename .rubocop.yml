@@ -266,16 +266,16 @@ Void:
 Layout/AlignParameters:
   EnforcedStyle: with_fixed_indentation
 
-Style/SymbolProc:
+Layout/SymbolProc:
   Enabled: false
 
-Style/MultilineOperationIndentation:
+Layout/MultilineOperationIndentation:
   EnforcedStyle: indented
 
-Style/EmptyLinesAroundBlockBody:
+Layout/EmptyLinesAroundBlockBody:
   Enabled: false
 
-Style/UnneededPercentQ:
+Layout/UnneededPercentQ:
   Enabled: false
 
 Metrics/AbcSize:
