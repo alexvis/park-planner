@@ -15,4 +15,4 @@ class RatingTile extends React.Component {
   }
 }
 
-exports default RatingTile;
+export default RatingTile;

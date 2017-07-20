@@ -14,4 +14,4 @@ class FollowButton extends React.Component {
   }
 }
 
-exports default FollowButton;
+export default FollowButton;

@@ -19,7 +19,7 @@ class ParkShow extends React.Component {
     let ratings = [
       {name: "avg_rating",  value: park.avg_rating},
       {name: "dog_friendly_avg_rating",  value: park.dog_friendly_avg_rating}
-    ] 
+    ]
 
     return(
       <FollowButton />
@@ -33,4 +33,4 @@ class ParkShow extends React.Component {
   }
 }
 
-exports default ParkShow;
+export default ParkShow;

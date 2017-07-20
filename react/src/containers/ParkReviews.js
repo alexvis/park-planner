@@ -26,4 +26,4 @@ class ParkReviews extends React.Component {
   }
 }
 
-exports default ParkReviews;
+export default ParkReviews;

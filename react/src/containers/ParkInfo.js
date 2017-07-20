@@ -6,18 +6,30 @@ class ParkInfo extends React.Component {
     super(props)
     this.state = {
       img = null,
-      ratings: []
+      ratings: [],
+      park_images: []
     }
   }
+
+  // componentDidMount() {
+  //   fetch(`/api/v1/...`)
+  //     .then((response) => response.json())
+  //     .then((responseData) => {
+  //       this.setState({park_images: responseData})
+  //     })
+  // }
 
   render() {
 
     let ratings = this.state.ratings.map(rating) => {
-      <ParkRatingTile
-	key={rating.name}
-	name={rating.name}
-	value={rating.value}
-	/>
+        <ParkRatingTile
+	         key={rating.name}
+  	       name={rating.name}
+  	       value={rating.value}
+        />
+        <Image
+          park_image={park_images.}
+        />
     }
 
     return(
@@ -26,4 +38,4 @@ class ParkInfo extends React.Component {
   }
 }
 
-exports default ParkInfo;
+export default ParkInfo;

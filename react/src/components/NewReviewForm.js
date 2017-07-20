@@ -16,4 +16,4 @@ class NewReviewForm extends React.Component {
   }
 }
 
-exports default NewReviewForm;
+export default NewReviewForm;

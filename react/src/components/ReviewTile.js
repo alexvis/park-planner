@@ -14,4 +14,4 @@ class ReviewTile extends React.Component {
   }
 }
 
-exports default ReviewTile;
+export default ReviewTile;
