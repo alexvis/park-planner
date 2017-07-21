@@ -19,9 +19,8 @@ describe('ReviewTile', ()=> {
     expect(wrapper.find("p")).toBePresent()
   })
 
-    it('should render the body', () => {
-      expect(wrapper.find("p").text()).toMatch("Test Body")
-    })
-
-
+  it('should render the body', () => {
+    expect(wrapper.find("p").text()).toMatch("Test Body")
+  })
+  
 })

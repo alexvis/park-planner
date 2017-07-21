@@ -1,5 +1,6 @@
 import React from 'react'
 import RatingTile from '../components/RatingTile'
+import ImageTile from '../components/ImageTile'
 
 class ParkInfo extends React.Component {
   constructor(props) {
@@ -31,7 +32,7 @@ class ParkInfo extends React.Component {
 
     return(
       <div>
-	<Image
+	<ImageTile
 	  park_image={park_images}
 	/>
 	{ratings}

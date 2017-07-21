@@ -20,12 +20,12 @@ describe('RatingTile', ()=> {
     expect(wrapper.find("p")).toBePresent()
   })
 
-    it('should render the name', () => {
-      expect(wrapper.find("p#name").text()).toMatch("Test Name")
-    })
+  it('should render the name', () => {
+    expect(wrapper.find("p#name").text()).toMatch("Test Name")
+  })
 
-    it('should render the value', () => {
-      expect(wrapper.find("p#value").text()).toMatch("3.4")
-    })
+  it('should render the value', () => {
+    expect(wrapper.find("p#value").text()).toMatch("3.4")
+  })
 
 })

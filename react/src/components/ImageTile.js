@@ -1,6 +1,6 @@
 import React from 'react'
 
-class Image extends React.Component {
+class ImageTile extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -9,9 +9,9 @@ class Image extends React.Component {
 
   render() {
     return(
-      <p>{this.props.park_image}</p>
+      <img alt='pix' src={this.props.park_image}/>
     )
   }
 }
 
-export default Image;
+export default ImageTile;
