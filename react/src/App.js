@@ -1,7 +1,7 @@
 import React from 'react'
 import { Router, browserHistory, Route, IndexRoute } from 'react-router';
-import NavBar from '../components/NavBar'
-import ParkShow from '../containers/ParkShow'
+import NavBar from './components/NavBar'
+import ParkShow from './containers/ParkShow'
 
 const App = (props) => {
   return(
