@@ -1,3 +1,2 @@
 class ParksController < ApplicationController
-
 end
