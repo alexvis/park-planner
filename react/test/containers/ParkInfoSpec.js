@@ -8,6 +8,12 @@ describe('ParkInfo', ()=> {
     beforeEach(() => {
       wrapper = mount(
         <ParkInfo
+          ratings = {[
+            {
+              name: "Test Rating Name",
+              value: 3.4
+            }
+          ]}
         />
       )
     });
@@ -21,14 +27,6 @@ describe('ParkInfo', ()=> {
   })
 
   it('should render a RatingTile if there is a rating', () => {
-    wrapper.setState({
-      ratings: [
-        {
-          name: "Test Rating Name",
-          value: 3.4
-        }
-      ]
-    })
     expect(wrapper.find(RatingTile)).toBePresent()
   })
 

@@ -16,20 +16,25 @@ class ParkShow extends React.Component {
   }
 
   render() {
-    let ratings = [
-      {name: "avg_rating",  value: park.avg_rating},
-      {name: "dog_friendly_avg_rating",  value: park.dog_friendly_avg_rating}
-    ]
+    let ratings
+    if(this.state.park) {
+      ratings = [
+        {name: "avg_rating",  value: this.state.park.avg_rating},
+        {name: "dog_friendly_avg_rating",  value: this.state.park.dog_friendly_avg_rating}
+      ]
+    }
 
     return(
       <div>
-	<FollowButton />
-	<ParkInfo
-	  ratings={ratings}
-	/>
+      	<FollowButton />
+      	{this.state.park &&
+          <ParkInfo
+        	  ratings={ratings}
+        	/>
+        }
 
-	<ParkReviews
-	/>
+      	<ParkReviews
+      	/>
       </div>
     )
   }

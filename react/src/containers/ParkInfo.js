@@ -7,7 +7,6 @@ class ParkInfo extends React.Component {
     super(props)
     this.state = {
       img: null,
-      ratings: [],
       park_images: []
     }
   }
@@ -22,7 +21,7 @@ class ParkInfo extends React.Component {
 
   render() {
 
-    let ratings = this.state.ratings.map(rating => {
+    let ratings = this.props.ratings.map(rating => {
       return(
         <RatingTile
       	  key={rating.name}
