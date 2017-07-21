@@ -10,19 +10,25 @@ class ParkReviews extends React.Component {
     }
   }
 
+  componentDidMount(){
+    // Fetch call to Reviews table to fetch array of reviews for this park
+  }
+
   render() {
 
-    let reviews = this.state.ratings.map(review => {
-      <ReviewTile
-	key={review.id}
-	body={review.body}
-	/>
+    let reviews = this.state.reviews.map(review => {
+      return(
+        <ReviewTile
+        	key={review.id}
+        	body={review.body}
+        />
+      )
     })
 
     return(
       <div>
-	<NewReviewForm />
-	{reviews}
+      	<NewReviewForm />
+      	{reviews}
       </div>
     )
   }
