@@ -18,14 +18,14 @@ RSpec.describe Api::V1::ParksController, type: :controller do
   describe "GET#index" do
     it "should return details about a park" do
 
-      get :show, id: first_park.id
+      get :show, params: {id: first_park.id}
       returned_json = JSON.parse(response.body)
       park = returned_json["park"]
 
       expect(response.status).to eq 200
       expect(response.content_type).to eq("application/json")
 
-      expect(park.length).to eq 1
+      expect(returned_json.length).to eq 1
       expect(park["name"]).to eq "Yosamite"
       expect(park["description"]).to eq "Test Park"
       expect(park["state"]).to eq "CA"
