@@ -12,5 +12,5 @@ class User < ApplicationRecord
     :trackable,
     :validatable
 
-    has_many :reviews
+  has_many :reviews
 end
