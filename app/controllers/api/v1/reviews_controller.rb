@@ -1,9 +1,7 @@
 class Api::V1::ReviewsController < ApplicationController
   def index
-    render json: Review.all
-  end
-
-  def create
-    
+    park = Park.find(params[:park_id])
+    reviews = park.reviews
+    render json: reviews
   end
 end
