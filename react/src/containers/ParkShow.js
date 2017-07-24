@@ -10,15 +10,19 @@ class ParkShow extends React.Component {
   }
 
   componentDidMount() {
-    //fetch call for 'park' state
-  }
+      let parkId = this.props.id;
+      fetch(`/api/v1/parks/${parkId}`)
+        .then((response) => response.json())
+        .then((responseData) => {
+          this.setState({park: responseData.park})
+        })
+    }
 
   render() {
     let ratings
     if(this.state.park) {
       ratings = [
-        {name: "avg_rating",  value: this.state.park.avg_rating},
-        {name: "dog_friendly_avg_rating",  value: this.state.park.dog_friendly_avg_rating}
+        {name: "avg_rating",  value: this.state.park.avg_rating}
       ]
     }
 
