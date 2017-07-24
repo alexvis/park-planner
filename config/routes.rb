@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       resources :parks, only: [:show] do
         resources :reviews, only: [:index]
       end
+      resources :follows, only: [:create]
     end
   end
 end
