@@ -12,10 +12,20 @@ class ParkShow extends React.Component {
   componentDidMount() {
       let parkId = this.props.id;
       fetch(`/api/v1/parks/${parkId}`)
+        .then(response => {
+          if (response.ok) {
+            return response;
+          } else {
+            let errorMessage = `${response.status} (${response.statusText})`,
+                error = new Error(errorMessage);
+            throw(error);
+          }
+        })
         .then((response) => response.json())
         .then((responseData) => {
           this.setState({park: responseData.park})
         })
+        .catch(error => console.error(`Error in fetch: ${error.message}`))
     }
 
   render() {
