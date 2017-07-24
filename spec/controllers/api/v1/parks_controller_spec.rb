@@ -26,16 +26,16 @@ RSpec.describe Api::V1::ParksController, type: :controller do
       expect(response.content_type).to eq("application/json")
 
       expect(park.length).to eq 1
-      expect(park["name"]).to eq "Yosamite",
-      expect(park["description"]).to eq "Test Park",
-      expect(park["state"]).to eq "CA",
-      expect(park["img_url"]).to eq  "http://www.yosamite.com/image",
-      expect(park["link_url"]).to eq "http://www.yosamite.com/image",
-      expect(park["avg_rating"]).to eq  5,
-      expect(park["dog_friendly_avg_rating"]).to eq  5,
-      expect(park["camping_avg_rating"]).to eq  5,
-      expect(park["playground_avg_rating"]).to eq  5,
-      expect(park["hiking_avg_rating"]).to eq  5,
+      expect(park["name"]).to eq "Yosamite"
+      expect(park["description"]).to eq "Test Park"
+      expect(park["state"]).to eq "CA"
+      expect(park["img_url"]).to eq  "http://www.yosamite.com/image"
+      expect(park["link_url"]).to eq "http://www.yosamite.com/image"
+      expect(park["avg_rating"]).to eq  5
+      expect(park["dog_friendly_avg_rating"]).to eq  5
+      expect(park["camping_avg_rating"]).to eq  5
+      expect(park["playground_avg_rating"]).to eq  5
+      expect(park["hiking_avg_rating"]).to eq  5
       expect(park["scenery_avg_rating"]).to eq  5
 
     end
