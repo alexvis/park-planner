@@ -7,4 +7,9 @@ Rails.application.routes.draw do
   # namespace :users do
   #   root 'users#show'
   # end
+  namespace :api do
+    namespace :v1 do
+      resources :reviews, only: [:index, :create]
+    end
+  end
 end
