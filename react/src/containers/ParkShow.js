@@ -1,5 +1,6 @@
 import React from 'react'
 import ParkInfo from './ParkInfo'
+import FollowButton from '../components/FollowButton'
 
 class ParkShow extends React.Component {
   constructor(props) {
@@ -39,11 +40,19 @@ class ParkShow extends React.Component {
     return(
       <div>
         <h1>React ParkShow</h1>
+
+	{this.state.park &&
+	  <FollowButton
+	    parkId={this.state.park.id}
+	  />
+	}
+
       	{this.state.park &&
           <ParkInfo
-        	  ratings={ratings}
-        	/>
+	    ratings={ratings}
+	  />
         }
+
       </div>
     )
   }

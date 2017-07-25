@@ -69,7 +69,7 @@ class FollowButton extends React.Component {
     }
     return(
       <div>
-
+	{followButton}
       </div>
     )
   }
