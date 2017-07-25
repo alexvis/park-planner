@@ -22,5 +22,6 @@ class Park < ApplicationRecord
     allow_nil: true
 
   has_many :reviews
-  # has_many favorites?
+  has_many :follows
+  has_many :users, through: :follows
 end

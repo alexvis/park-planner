@@ -1,5 +1,6 @@
 import React from 'react'
 import ParkInfo from './ParkInfo'
+import ParkReviews from './ParkReviews'
 
 class ParkShow extends React.Component {
   constructor(props) {
@@ -30,20 +31,28 @@ class ParkShow extends React.Component {
 
   render() {
     let ratings
+    let parkName
     if(this.state.park) {
       ratings = [
         {name: "avg_rating",  value: this.state.park.avg_rating}
       ]
+      parkName = this.state.park.name;
     }
 
     return(
       <div>
         <h1>React ParkShow</h1>
-      	{this.state.park &&
+        <p>{parkName}</p>
+        {this.state.park &&
           <ParkInfo
         	  ratings={ratings}
         	/>
         }
+        <div>
+          <ParkReviews
+          park_id = {this.props.id}
+          />
+        </div>
       </div>
     )
   }
