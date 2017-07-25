@@ -1,11 +1,10 @@
 class Api::V1::FollowsController < ApplicationController
+  skip_before_action :verify_authenticity_token
 
   def index
-    if !current_user
+    if !params[:user_id]
       render json: {following: nil}
-    end
-
-    if(Follow.find_by park_id: parms[:park_id], user_id: current_user.id)
+    elsif(Follow.find_by park_id: params[:park_id], user_id: params[:user_id])
       render json: {following: true}
     else
       render json: {following: false}
@@ -13,23 +12,19 @@ class Api::V1::FollowsController < ApplicationController
   end
 
   def create 
-    @follow = Follow.new(follow_params)
+    # Toggles creating and deleting the following entry to follow and unfollow
+    data = JSON.parse(request.body.read)
+    dataFollow = data["follow"]
+    follow = Follow.find_by park_id: dataFollow["park_id"], user_id: dataFollow["user_id"]
 
-    if @follow.save
-      render json: {following: true}
-    else
+    if(follow)
+      # Follow exists, destroy it
+      Follow.destroy(follow.id)
       render json: {following: false}
+    else 
+      # Follow does not exist, create it
+      follow = Follow.create(dataFollow)
+      render json: {following: true}
     end
-  end
-
-  def destroy
-  end
-
-  private
-
-  def follow_params
-    follow = params.require(:follow).permit(:park_id)
-    user = {user_id: current_user.id}
-    follow.merge(user)
   end
 end

@@ -5,9 +5,10 @@ import ParkShow from './containers/ParkShow';
 
 $(function() {
   let appDiv = document.getElementById('app')
-  let id = appDiv.dataset.id
+  let parkId = appDiv.dataset.park_id
+  let userId = appDiv.dataset.user_id
   ReactDOM.render(
-    <ParkShow id={id}/>,
+    <ParkShow parkId={parkId} userId={userId}/>,
     appDiv
   );
 });

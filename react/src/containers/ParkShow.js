@@ -11,7 +11,7 @@ class ParkShow extends React.Component {
   }
 
   componentDidMount() {
-      let parkId = this.props.id;
+      let parkId = this.props.parkId;
       fetch(`/api/v1/parks/${parkId}`)
         .then(response => {
           if (response.ok) {
@@ -37,15 +37,19 @@ class ParkShow extends React.Component {
       ]
     }
 
+    let followButton
+    if(this.state.park && this.props.userId) {
+      followButton = <FollowButton
+	parkId={this.state.park.id}
+	userId={this.props.userId}
+      />
+    }
+
     return(
       <div>
         <h1>React ParkShow</h1>
 
-	{this.state.park &&
-	  <FollowButton
-	    parkId={this.state.park.id}
-	  />
-	}
+	{followButton}
 
       	{this.state.park &&
           <ParkInfo

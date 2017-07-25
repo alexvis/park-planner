@@ -1,5 +1,5 @@
-<h1>Hello from parks show!</h1>
+<h1>Hello <%= current_user.first_name %> from parks show!</h1>
 
-<div id="app" data-id= <%= @id %> >
+<div id="app" data-park_id= <%= @id %> data-user_id= <%= current_user.id %> >
 
 </div>
