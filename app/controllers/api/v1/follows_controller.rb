@@ -2,9 +2,7 @@ class Api::V1::FollowsController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def index
-    if !params[:user_id]
-      render json: {following: nil}
-    elsif(Follow.find_by park_id: params[:park_id], user_id: params[:user_id])
+    if(Follow.find_by park_id: params[:park_id], user_id: params[:user_id])
       render json: {following: true}
     else
       render json: {following: false}
@@ -12,7 +10,7 @@ class Api::V1::FollowsController < ApplicationController
   end
 
   def create 
-    # Toggles creating and deleting the following entry to follow and unfollow
+    # Toggles creating and deleting the following entry in order to follow and unfollow
     data = JSON.parse(request.body.read)
     dataFollow = data["follow"]
     follow = Follow.find_by park_id: dataFollow["park_id"], user_id: dataFollow["user_id"]
