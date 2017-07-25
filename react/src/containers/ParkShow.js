@@ -1,6 +1,7 @@
 import React from 'react'
 import ParkInfo from './ParkInfo'
 import FollowButton from '../components/FollowButton'
+import ParkReviews from './ParkReviews'
 
 class ParkShow extends React.Component {
   constructor(props) {
@@ -31,10 +32,12 @@ class ParkShow extends React.Component {
 
   render() {
     let ratings
+    let parkName
     if(this.state.park) {
       ratings = [
         {name: "avg_rating",  value: this.state.park.avg_rating}
       ]
+      parkName = this.state.park.name;
     }
 
     let followButton
@@ -48,15 +51,18 @@ class ParkShow extends React.Component {
     return(
       <div>
         <h1>React ParkShow</h1>
-
+        <p>{parkName}</p>
 	{followButton}
-
-      	{this.state.park &&
+        {this.state.park &&
           <ParkInfo
 	    ratings={ratings}
 	  />
         }
-
+        <div>
+          <ParkReviews
+          park_id = {this.props.parkId}
+          />
+        </div>
       </div>
     )
   }
