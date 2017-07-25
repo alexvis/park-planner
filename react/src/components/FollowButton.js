@@ -10,6 +10,10 @@ class FollowButton extends React.Component {
   }
 
   ComponentDidMount() {
+    // Set this.state.following to either:
+    //   null if the user is not logged in
+    //   true if the user is following
+    //   false if the user is not following
     fetch(`/api/v1/parks/${this.props.parkId}/follows`)
     .then(response => {
       if (response.ok) {

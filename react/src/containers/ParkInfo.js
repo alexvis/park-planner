@@ -22,6 +22,7 @@ class ParkInfo extends React.Component {
 
     return(
       <div>
+	<FollowButton parkId={this.prop
       	{ratings}
       </div>
     )
