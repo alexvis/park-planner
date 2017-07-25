@@ -7,5 +7,6 @@ FactoryGirl.define do
     user_name 'Jdog'
     password 'password'
     password_confirmation 'password'
+    profile_photo ''
   end
 end
