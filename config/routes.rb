@@ -9,8 +9,9 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :parks, only: [:show] do
         resources :reviews, only: [:index]
+        resources :follows, only: [:index]
       end
-      resources :follows, only: [:create]
+      resources :follows, only: [:create, :destroy]
     end
   end
 end
