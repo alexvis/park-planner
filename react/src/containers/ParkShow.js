@@ -31,18 +31,18 @@ class ParkShow extends React.Component {
 
   render() {
     let ratings
-    let park_name
+    let parkName
     if(this.state.park) {
       ratings = [
         {name: "avg_rating",  value: this.state.park.avg_rating}
       ]
-      park_name = this.state.park.name;
+      parkName = this.state.park.name;
     }
 
     return(
       <div>
         <h1>React ParkShow</h1>
-        <p>{park_name}</p>
+        <p>{parkName}</p>
         {this.state.park &&
           <ParkInfo
         	  ratings={ratings}
