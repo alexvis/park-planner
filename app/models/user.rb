@@ -15,4 +15,5 @@ class User < ApplicationRecord
     :validatable
 
   has_many :reviews
+  has_many :follows
 end
