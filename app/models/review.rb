@@ -1,10 +1,7 @@
 class Review < ApplicationRecord
-  belongs_to :park
-  belongs_to :user
-
   validates :park_rating,
-    numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 5 },
-    allow_nil: true
+    presence: true,
+    numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 5 }
   validates :dog_friendly_rating,
     numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 5 },
     allow_nil: true
@@ -21,4 +18,6 @@ class Review < ApplicationRecord
     numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 5 },
     allow_nil: true
 
+    belongs_to :park
+    belongs_to :user
 end

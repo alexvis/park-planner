@@ -5,10 +5,10 @@ RSpec.describe Review, type: :model do
   it { should have_valid(:comment).when(nil, "") }
 
 
+  it { should_not have_valid(:park_rating).when(nil) }
   it { should have_valid(:park_rating).when(3) }
   it { should have_valid(:park_rating).when(1) }
   it { should have_valid(:park_rating).when(4) }
-  it { should have_valid(:park_rating).when(nil) }
   it { should_not have_valid(:park_rating).when(-1) }
   it { should_not have_valid(:park_rating).when(6) }
 
