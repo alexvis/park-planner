@@ -9,29 +9,29 @@ class ParkReviews extends React.Component {
      }
    }
 
-
    componentDidMount() {
-       let parkId = this.props.park_id;
-       fetch(`/api/v1/parks/${parkId}/reviews`)
-         .then(response => {
-           if (response.ok) {
-             return response;
-           } else {
-             let errorMessage = `${response.status} (${response.statusText})`,
-                 error = new Error(errorMessage);
-             throw(error);
-           }
-         })
-         .then((response) => response.json())
-         .then((responseData) => {
-           debugger;
-           this.setState({reviewsArray: responseData})
-         })
-         .catch(error => console.error(`Error in fetch: ${error.message}`))
+     let parkId = this.props.park_id;
+     fetch(`/api/v1/parks/${parkId}/reviews`)
+       .then(response => {
+         if (response.ok) {
+           return response;
+         } else {
+           let errorMessage = `${response.status} (${response.statusText})`,
+               error = new Error(errorMessage);
+           throw(error);
+         }
+       })
+       .then((response) => response.json())
+       .then((responseData) => {
+         this.setState({reviewsArray: responseData.reviews})
+       })
+       .catch(error => console.error(`Error in fetch: ${error.message}`))
      }
 
   render(){
-    let reviews = this.state.reviewsArray.map (review => {
+    let reviews
+    if(this.state.reviewsArray.length != 0)
+    reviews = this.state.reviewsArray.map (review => {
       return(
         <ReviewTile
           key = {review.id}
@@ -39,7 +39,6 @@ class ParkReviews extends React.Component {
         />
       )
     })
-
     return(
       <div>
         {reviews}
