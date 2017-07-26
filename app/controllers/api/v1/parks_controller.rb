@@ -4,4 +4,6 @@ class Api::V1::ParksController < ApplicationController
 
     render json: {park: park}
   end
+  def create
+  end
 end

@@ -1,13 +1,16 @@
 import React from 'react'
 import ParkInfo from './ParkInfo'
 import ParkReviews from './ParkReviews'
+import ParkFormContainer from './ParkFormContainer'
 
 class ParkShow extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      park: null
+      park: null,
+      parks: []
     }
+    this.addNewArticle = this.addNewArticle.bind(this)
   }
 
   componentDidMount() {
@@ -29,6 +32,19 @@ class ParkShow extends React.Component {
         .catch(error => console.error(`Error in fetch: ${error.message}`))
     }
 
+
+    addNewPark(formPayload) {
+    fetch('/api/v1/parks', {
+      method: 'POST',
+      body: JSON.stringify(formPayload)
+    })
+    .then(response => response.json())
+    .then(responseData => {
+      this.setState({ parks: [...this.state.parks, responseData] })
+    })
+  }
+
+
   render() {
     let ratings
     let parkName
@@ -48,6 +64,9 @@ class ParkShow extends React.Component {
         	  ratings={ratings}
         	/>
         }
+
+        <ParkFormContainer addNewPark={this.addNewPark} />
+
         <div>
           <ParkReviews
           park_id = {this.props.id}
