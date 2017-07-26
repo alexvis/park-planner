@@ -34,8 +34,8 @@ class VoteButton extends React.Component {
   handleVoteClick(event) {
     let data = {
       vote: {
-	       park_id: this.props.parkId,
-	        user_id: this.props.userId
+	       rating_id: this.props.ratingId,
+         user_id: this.props.userId
       }
     };
     let jsonStringData = JSON.stringify(data);
