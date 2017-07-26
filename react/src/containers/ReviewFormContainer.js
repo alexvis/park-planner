@@ -26,6 +26,7 @@ class ReviewFormContainer extends React.Component {
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.addNewReview = this.addNewReview.bind(this);
     this.clearForm = this.clearForm.bind(this);
+    this.validateDropdownSelection = this.validateDropdownSelection.bind(this);
   }
 
   handleChange(event) {
@@ -36,7 +37,7 @@ class ReviewFormContainer extends React.Component {
 
   handleParkRating(event) {
     let value = event.target.value;
-    if (value == '-') {
+    if (value === '-') {
       this.setState({ parkRating: null });
     } else {
       this.setState({ parkRating: value });
@@ -45,7 +46,7 @@ class ReviewFormContainer extends React.Component {
 
   handleDogRating(event) {
     let value = event.target.value;
-    if (value == '-') {
+    if (value === '-') {
       this.setState({ dogRating: null });
     } else {
       this.setState({ dogRating: value });
@@ -54,7 +55,7 @@ class ReviewFormContainer extends React.Component {
 
   handlePlaygroundRating(event) {
     let value = event.target.value;
-    if (value == '-') {
+    if (value === '-') {
       this.setState({ playgroundRating: null });
     } else {
       this.setState({ playgroundRating: value });
@@ -63,7 +64,7 @@ class ReviewFormContainer extends React.Component {
 
   handleCampingRating(event) {
     let value = event.target.value;
-    if (value == '-') {
+    if (value === '-') {
       this.setState({ campingRating: null });
     } else {
       this.setState({ campingRating: value });
@@ -72,7 +73,7 @@ class ReviewFormContainer extends React.Component {
 
   handleHikingRating(event) {
     let value = event.target.value;
-    if (value == '-') {
+    if (value === '-') {
       this.setState({ hikingRating: null });
     } else {
       this.setState({ hikingRating: value });
@@ -81,7 +82,7 @@ class ReviewFormContainer extends React.Component {
 
   handleSceneryRating(event) {
     let value = event.target.value;
-    if (value == '-') {
+    if (value === '-') {
       this.setState({ sceneryRating: null });
     } else {
       this.setState({ sceneryRating: value });
@@ -91,19 +92,23 @@ class ReviewFormContainer extends React.Component {
 
   handleFormSubmit(event) {
     event.preventDefault();
-    let formPayload = {
-      park_id: this.props.parkId,
-      user_id: this.props.userId,
-      comment: this.state.comment,
-      park_rating: this.state.parkRating,
-      dog_friendly_rating: this.state.dogRating,
-      playground_rating: this.state.playgroundRating,
-      camping_rating: this.state.campingRating,
-      hiking_rating: this.state.hikingRating,
-      scenery_rating: this.state.sceneryRating
+    if (this.validateDropdownSelection(this.state.parkRating)) {
+      console.log("error")
+    } else {
+      let formPayload = {
+        park_id: this.props.parkId,
+        user_id: this.props.userId,
+        comment: this.state.comment,
+        park_rating: this.state.parkRating,
+        dog_friendly_rating: this.state.dogRating,
+        playground_rating: this.state.playgroundRating,
+        camping_rating: this.state.campingRating,
+        hiking_rating: this.state.hikingRating,
+        scenery_rating: this.state.sceneryRating
+      }
+      this.addNewReview(formPayload);
+      this.clearForm();
     }
-    this.addNewReview(formPayload);
-    this.clearForm();
   }
 
   addNewReview(formPayload) {
@@ -114,17 +119,16 @@ class ReviewFormContainer extends React.Component {
     	if (response.ok) {
     	  return response;
     	} else {
-    	  let errorMessage = `${response.status} (${response.statusText})`,
-    	      error = new Error(errorMessage);
-    	  throw(error);
+        let errorMessage = `${response.status} (${response.statusText})`,
+        error = new Error(errorMessage);
+        throw(error);
     	}
-          })
-          .then(response => response.json())
-          .then(body => {
-    	       console.log(body);
-             this.props.handleFormResponse(body)
-          })
-          .catch(error => console.error(`Error in fetch: ${error.message}`));
+    }).then(response => response.json()
+    ).then(body => {
+      console.log(body);
+      this.props.handleFormResponse(body)
+    })
+    .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
   clearForm() {
@@ -137,6 +141,12 @@ class ReviewFormContainer extends React.Component {
       hikingRating: '-',
       sceneryRating: '-',
     })
+  }
+
+  validateDropdownSelection(selection) {
+    if (selection === '-' || selection === null) {
+      return true;
+    }
   }
 
 
