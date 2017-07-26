@@ -1,5 +1,6 @@
 import React from 'react'
 import ReviewTile from '../components/ReviewTile'
+import ReviewFormContainer from './ReviewFormContainer'
 
 class ParkReviews extends React.Component {
   constructor(props) {
@@ -31,7 +32,7 @@ class ParkReviews extends React.Component {
   render(){
     let reviews
     if(this.state.reviewsArray.length != 0)
-    reviews = this.state.reviewsArray.map (review => {
+      reviews = this.state.reviewsArray.map (review => {
       return(
         <ReviewTile
           key = {review.id}
@@ -39,9 +40,18 @@ class ParkReviews extends React.Component {
         />
       )
     })
+
     return(
       <div>
-        {reviews}
+        <div>
+          <ReviewFormContainer
+            parkId = {this.props.park_id}
+            userId = {this.props.userId}
+          />
+        </div>
+        <div>
+          {reviews}
+        </div>
       </div>
     )
   }
