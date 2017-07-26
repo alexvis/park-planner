@@ -10,6 +10,9 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :parks, only: [:show] do
         resources :reviews, only: [:index]
+	      resources :users, only: [:show] do
+	       resources :follows, only: [:index]
+	      end
       end
       resources :reviews, only: [:show] do
         resources :users, only: [:show] do
@@ -17,6 +20,7 @@ Rails.application.routes.draw do
         end
       end
       resources :votes, only: [:create]
+      resources :follows, only: [:create]
     end
   end
 end

@@ -8,5 +8,6 @@ FactoryGirl.define do
     password 'password'
     password_confirmation 'password'
     profile_photo ''
+    role 'member'
   end
 end

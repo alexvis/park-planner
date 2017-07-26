@@ -6,6 +6,7 @@ class User < ApplicationRecord
   validates :email, presence: true
   validates :state, presence: true
   validates :user_name, presence: true
+  validates :role, presence: true
 
   devise :database_authenticatable,
     :registerable,
@@ -16,4 +17,8 @@ class User < ApplicationRecord
 
   has_many :reviews
   has_many :follows
+
+  def admin?
+    role == "admin"
+  end
 end
