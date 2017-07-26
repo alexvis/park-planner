@@ -16,6 +16,8 @@ feature 'user signs in', %Q{
 
     expect(page).to have_content('Welcome Back!')
     expect(page).to have_content('Sign Out')
+    expect(page).to have_content('Home')
+    expect(page).to have_content('My Account')
   end
   scenario 'a nonexistant email and password is supplied' do
     visit root_path
@@ -27,6 +29,8 @@ feature 'user signs in', %Q{
     expect(page).to have_content('Invalid Email or password.')
     expect(page).to_not have_content('Welcome Back!')
     expect(page).to_not have_content('Sign Out')
+    expect(page).to_not have_content('Home')
+    expect(page).to_not have_content('My Account')
   end
   scenario 'a exisiting email with the wrong password is denied access' do
     user = FactoryGirl.create(:user)
@@ -47,10 +51,24 @@ feature 'user signs in', %Q{
     click_button 'Sign In'
 
     expect(page).to have_content('Sign Out')
+    expect(page).to have_content('Home')
     expect(page).to_not have_content('Sign In')
 
     visit new_user_session_path
 
     expect(page).to have_content('You are already signed in.')
+  end
+  scenario 'an authorized admin user signs in' do
+    user = FactoryGirl.create(:user, role: "admin")
+    visit new_user_session_path
+    fill_in 'Email', with: user.email
+    fill_in 'Password', with: user.password
+    click_button 'Sign In'
+
+    expect(page).to have_content('Welcome Back!')
+    expect(page).to have_content('Sign Out')
+    expect(page).to have_content('Admin')
+    expect(page).to have_content('Home')
+    expect(page).to have_content('My Account')
   end
 end
