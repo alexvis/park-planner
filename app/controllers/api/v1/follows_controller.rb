@@ -16,7 +16,8 @@ class Api::V1::FollowsController < ApplicationController
     data_follow = data["follow"]
     follow = Follow.find_by(
       park_id: data_follow["park_id"],
-      user_id: data_follow["user_id"])
+      user_id: data_follow["user_id"]
+    )
 
     if follow
       # Follow exists, destroy it
