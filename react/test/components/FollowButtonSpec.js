@@ -6,8 +6,8 @@ describe('FollowButton', ()=> {
     beforeEach(() => {
       wrapper = mount(
         <FollowButton
-	  parkId=1,
-	  userId=1
+	  parkId={1}
+	  userId={1}
         />
       )
     });
