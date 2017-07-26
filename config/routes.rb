@@ -11,6 +11,12 @@ Rails.application.routes.draw do
       resources :parks, only: [:show] do
         resources :reviews, only: [:index]
       end
+      resources :reviews, only: [:show] do
+        resources :users, only: [:show] do
+          resources :votes, only: [:index]
+        end
+      end
+      resources :votes, only: [:create]
     end
   end
 end
