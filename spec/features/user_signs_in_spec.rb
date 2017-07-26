@@ -54,15 +54,12 @@ feature 'user signs in', %Q{
     expect(page).to have_content('You are already signed in.')
   end
   scenario 'an authorized admin user signs in' do
-    user = FactoryGirl.create(:user)
-    user.role = "admin"
+    user = FactoryGirl.create(:user, role: "admin")
     visit new_user_session_path
     fill_in 'Email', with: user.email
     fill_in 'Password', with: user.password
     click_button 'Sign In'
 
-    visit new_user_session_path
-
-    expect(page).to have_content('Welcome Admin to User Index.')
+    expect(page).to have_content('Welcome Admin to User Index')
   end
 end

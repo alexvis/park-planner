@@ -2,7 +2,6 @@ class UsersController < ApplicationController
   before_action :authorize_user, except: [:index]
 
   def index
-
   end
 
   def show
@@ -31,6 +30,7 @@ class UsersController < ApplicationController
 
   def authorize_user
     if current_user.admin?
+      @users = User.all
       render :index
     end
   end
