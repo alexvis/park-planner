@@ -19,6 +19,7 @@
       <div class="top-bar-left">
         <ul class="menu">
           <% if user_signed_in?  %>
+            <%= link_to "Back", :back %>
             <li class="left"><%= link_to 'Home', user_path(current_user) %></li>
             <% if current_user.admin? %>
               <li class="right"><%= link_to 'Admin', users_path %></li>
