@@ -1,4 +1,8 @@
+require 'pry'
+
 class Api::V1::ReviewsController < ApplicationController
+  skip_before_action :verify_authenticity_token
+
   def index
     park = Park.find(params[:park_id])
     reviews = park.reviews
@@ -6,13 +10,9 @@ class Api::V1::ReviewsController < ApplicationController
   end
 
   def create
-      data = JSON.parse(response.body.read)
-      review = Review.new(data)
-
-     if review.save
-       render json: data
-     else
-      #  render action: 'new'
-     end
+    data = JSON.parse(request.body.read)
+    review = Review.new(data)
+    review.save
+    render json: data
   end
 end

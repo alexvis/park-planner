@@ -8,12 +8,13 @@ class ReviewFormContainer extends React.Component {
     this.state = {
       comment: '',
       parkRating: null,
-      dogRating: '-',
+      dogRating: null,
       playgroundRating: null,
       campingRating: null,
       hikingRating: null,
       sceneryRating: null,
     }
+
     this.handleChange = this.handleChange.bind(this);
     this.handleParkRating = this.handleParkRating.bind(this);
     this.handleDogRating = this.handleDogRating.bind(this);
@@ -24,7 +25,7 @@ class ReviewFormContainer extends React.Component {
 
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.addNewReview = this.addNewReview.bind(this);
-    // this.clearForm = this.clearForm.bind(this);
+    this.clearForm = this.clearForm.bind(this);
   }
 
   handleChange(event) {
@@ -87,37 +88,54 @@ class ReviewFormContainer extends React.Component {
     }
   }
 
+
   handleFormSubmit(event) {
     event.preventDefault();
-    // API stuff...
     let formPayload = {
       park_id: this.props.parkId,
-      user_id: this.props.userId
+      user_id: this.props.userId,
       comment: this.state.comment,
-      parkRating: this.state.parkRating,
-      dogRating: this.state.dogRating,
-      playgroundRating: this.state.playgroundRating,
-      campingRating: this.state.campingRating,
-      hikingRating: this.state.hikingRating,
-      sceneryRating: this.state.sceneryRating
+      park_rating: this.state.parkRating,
+      dog_friendly_rating: this.state.dogRating,
+      playground_rating: this.state.playgroundRating,
+      camping_rating: this.state.campingRating,
+      hiking_rating: this.state.hikingRating,
+      scenery_rating: this.state.sceneryRating
     }
-    addNewReview(formPayload);
-    // Clear the form
-    this.setState({
-      comment: '',
-      parkRating: null,
-      dogRating: null,
-      playgroundRating: null,
-      campingRating: null,
-      hikingRating: null,
-      sceneryRating: null,
-    })
+    this.addNewReview(formPayload);
+    this.clearForm();
   }
 
   addNewReview(formPayload) {
     fetch('/api/v1/reviews', {
       method: 'POST',
       body: JSON.stringify(formPayload)
+    }).then(response => {
+    	if (response.ok) {
+    	  return response;
+    	} else {
+    	  let errorMessage = `${response.status} (${response.statusText})`,
+    	      error = new Error(errorMessage);
+    	  throw(error);
+    	}
+          })
+          .then(response => response.json())
+          .then(body => {
+    	       console.log(body);
+             this.props.handleFormResponse(body)
+          })
+          .catch(error => console.error(`Error in fetch: ${error.message}`));
+  }
+
+  clearForm() {
+    this.setState({
+      comment: '',
+      parkRating: '-',
+      dogRating: '-',
+      playgroundRating: '-',
+      campingRating: '-',
+      hikingRating: '-',
+      sceneryRating: '-',
     })
   }
 

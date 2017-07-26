@@ -8,6 +8,13 @@ class ParkReviews extends React.Component {
     this.state = {
       reviewsArray: []
      }
+     this.handleFormResponse = this.handleFormResponse.bind(this);
+   }
+
+   handleFormResponse(newReview) {
+     this.setState(prevState => ({
+       reviewsArray: [...prevState.reviewsArray, newReview]
+     }))
    }
 
    componentDidMount() {
@@ -46,7 +53,8 @@ class ParkReviews extends React.Component {
         <div>
           <ReviewFormContainer
             parkId = {this.props.park_id}
-            userId = {this.props.userId}
+            userId = {this.props.user_id}
+            handleFormResponse={this.handleFormResponse}
           />
         </div>
         <div>
@@ -57,7 +65,4 @@ class ParkReviews extends React.Component {
   }
 }
 
-
-
-
-  export default ParkReviews;
+export default ParkReviews;
