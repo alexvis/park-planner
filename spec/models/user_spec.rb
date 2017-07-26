@@ -16,6 +16,9 @@ RSpec.describe User, type: :model do
   it { should have_valid(:state).when('MA', 'VT')}
   it { should_not have_valid(:state).when(nil, '')}
 
+  it { should have_valid(:role).when('member', 'admin')}
+  it { should_not have_valid(:role).when(nil, '')}
+
   it 'has a matching password confirmation for the password' do
     user = User.new
     user.password = 'password'

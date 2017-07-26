@@ -30,7 +30,7 @@ class UsersController < ApplicationController
   end
 
   def authorize_user
-    if (current_user.role == "admin")
+    if current_user.admin?
       render :index
     end
   end
