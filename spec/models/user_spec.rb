@@ -16,6 +16,19 @@ RSpec.describe User, type: :model do
   it { should have_valid(:state).when('MA', 'VT')}
   it { should_not have_valid(:state).when(nil, '')}
 
+  it { should have_valid(:role).when('member', 'admin')}
+  it { should_not have_valid(:role).when(nil, '')}
+  
+  it "is not an admin if the role is not admin" do
+    user = FactoryGirl.create(:user, role: "member")
+    expect(user.admin?).to eq(false)
+  end
+
+  it "is an admin if the role is admin" do
+    user = FactoryGirl.create(:user, role: "admin")
+    expect(user.admin?).to eq(true)
+  end
+
   it 'has a matching password confirmation for the password' do
     user = User.new
     user.password = 'password'

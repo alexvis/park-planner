@@ -10,7 +10,11 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :parks, only: [:show, :create] do
         resources :reviews, only: [:index]
+	resources :users, only: [:show] do
+	  resources :follows, only: [:index]
+	end
       end
+      resources :follows, only: [:create]
     end
   end
 end

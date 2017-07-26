@@ -1,16 +1,20 @@
 class UsersController < ApplicationController
-  def index
+  before_action :authorize_user, only: [:index]
 
+  def index
+    @users = User.all
   end
+
   def show
-    # @user = User.find(params[:id])
   end
+
   def edit
   end
 
   def create
     @user = current_user
   end
+
   def update
     @user = current_user
     if @user.update(user_params)
@@ -23,5 +27,11 @@ class UsersController < ApplicationController
   private
   def user_params
     params.require(:user).permit(:first_name, :last_name, :email, :state, :user_name, :profile_photo)
+  end
+
+  def authorize_user
+    if !user_signed_in? || !current_user.admin?
+      raise ActionController::RoutingError.new("Not Found")
+    end
   end
 end

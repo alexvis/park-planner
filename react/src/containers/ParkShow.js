@@ -1,5 +1,6 @@
 import React from 'react'
 import ParkInfo from './ParkInfo'
+import FollowButton from '../components/FollowButton'
 import ParkReviews from './ParkReviews'
 import ParkFormContainer from './ParkFormContainer'
 
@@ -14,7 +15,7 @@ class ParkShow extends React.Component {
   }
 
   componentDidMount() {
-      let parkId = this.props.id;
+      let parkId = this.props.parkId;
       fetch(`/api/v1/parks/${parkId}`)
         .then(response => {
           if (response.ok) {
@@ -55,21 +56,30 @@ class ParkShow extends React.Component {
       parkName = this.state.park.name;
     }
 
+    let followButton
+    if(this.state.park && this.props.userId) {
+      followButton = <FollowButton
+	parkId={this.state.park.id}
+	userId={this.props.userId}
+      />
+    }
+
     return(
       <div>
         <h1>React ParkShow</h1>
         <p>{parkName}</p>
+	{followButton}
         {this.state.park &&
           <ParkInfo
-        	  ratings={ratings}
-        	/>
+	    ratings={ratings}
+	  />
         }
 
         <ParkFormContainer addNewPark={this.addNewPark} />
 
         <div>
           <ParkReviews
-          park_id = {this.props.id}
+          park_id = {this.props.parkId}
           />
         </div>
       </div>
