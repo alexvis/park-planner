@@ -7,6 +7,8 @@ class VoteButton extends React.Component {
       voting: null
     }
     this.handleVoteClick = this.handleVoteClick.bind(this)
+    this.handleUpvoteClick = this.handleUpvoteClick.bind(this)
+
   }
 
   componentDidMount() {
@@ -29,6 +31,13 @@ class VoteButton extends React.Component {
       this.setState( {voting: body.voting} )
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
+  }
+
+  handleUpvoteClick(event) {
+    console.log("Upvote Clicked")
+    this.setState(prevState => ({
+      voting: (prevState.voting === true ? null : true)
+    }))
   }
 
   handleVoteClick(event) {
@@ -61,16 +70,14 @@ class VoteButton extends React.Component {
   }
 
   render() {
-    let voteButton;
-    if (this.state.voting !== null) {
-      voteButton = <button onClick={this.handleVoteClick}>
-	       {(this.state.voting ? "Stop Voting" : "Vote")}
-      </button>
-    }
+    let upvoteButton = <button onClick={this.handleUpvoteClick}>{this.state.voting === true ? "Unup" : "Up"}</button>;
+    let downvoteButton = <button>{this.state.voting === false ? "Undown" : "Down"}</button>;
+
     return(
       <div>
           <p>Vote Button</p>
-	       {voteButton}
+	       {upvoteButton}
+         {downvoteButton}
       </div>
     )
   }
