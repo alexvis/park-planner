@@ -9,42 +9,36 @@ class ParkShow extends React.Component {
     super(props)
     this.state = {
       park: null,
-      parks: []
     }
-    this.addNewArticle = this.addNewArticle.bind(this)
+    this.addNewPark = this.addNewPark.bind(this)
   }
 
-  componentDidMount() {
-      let parkId = this.props.parkId;
-      fetch(`/api/v1/parks/${parkId}`)
-        .then(response => {
-          if (response.ok) {
-            return response;
-          } else {
-            let errorMessage = `${response.status} (${response.statusText})`,
-                error = new Error(errorMessage);
-            throw(error);
-          }
-        })
-        .then((response) => response.json())
-        .then((responseData) => {
-          this.setState({park: responseData.park})
-        })
-        .catch(error => console.error(`Error in fetch: ${error.message}`))
-    }
+componentDidMount() {
+    let parkId = this.props.parkId;
+    fetch(`/api/v1/parks/${parkId}`)
+      .then(response => {
+        if (response.ok) {
+          return response;
+        } else {
+          let errorMessage = `${response.status} (${response.statusText})`,
+              error = new Error(errorMessage);
+          throw(error);
+        }
+      })
+      .then((response) => response.json())
+      .then((responseData) => {
+        this.setState({park: responseData.park})
+      })
+      .catch(error => console.error(`Error in fetch: ${error.message}`))
+  }
 
 
-    addNewPark(formPayload) {
+  addNewPark(formPayload) {
     fetch('/api/v1/parks', {
       method: 'POST',
-      body: JSON.stringify(formPayload)
-    })
-    .then(response => response.json())
-    .then(responseData => {
-      this.setState({ parks: [...this.state.parks, responseData] })
+    body: JSON.stringify(formPayload)
     })
   }
-
 
   render() {
     let ratings
@@ -59,9 +53,9 @@ class ParkShow extends React.Component {
     let followButton
     if(this.state.park && this.props.userId) {
       followButton = <FollowButton
-	parkId={this.state.park.id}
-	userId={this.props.userId}
-      />
+                      	parkId={this.state.park.id}
+                      	userId={this.props.userId}
+                      />
     }
 
     return(
@@ -70,9 +64,7 @@ class ParkShow extends React.Component {
         <p>{parkName}</p>
 	{followButton}
         {this.state.park &&
-          <ParkInfo
-	    ratings={ratings}
-	  />
+          <ParkInfo ratings={ratings} />
         }
 
         <ParkFormContainer addNewPark={this.addNewPark} />
@@ -82,6 +74,7 @@ class ParkShow extends React.Component {
           park_id = {this.props.parkId}
           />
         </div>
+
       </div>
     )
   }
