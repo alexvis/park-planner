@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
-  before_action :authorize_user, except: [:index]
+  before_action :authorize_user, only: [:index]
 
   def index
+    @users = User.all
   end
 
   def show
@@ -29,9 +30,8 @@ class UsersController < ApplicationController
   end
 
   def authorize_user
-    if current_user.admin?
-      @users = User.all
-      render :index
+    if !user_signed_in? || !current_user.admin?
+      raise ActionController::RoutingError.new("Not Found")
     end
   end
 end

@@ -60,6 +60,6 @@ feature 'user signs in', %Q{
     fill_in 'Password', with: user.password
     click_button 'Sign In'
 
-    expect(page).to have_content('Welcome Admin to User Index')
+    expect(page).to have_content('Admin')
   end
 end
