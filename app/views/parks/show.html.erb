@@ -3,3 +3,27 @@
 <div id="app" data-id= <%= @id %> >
 
 </div>
+
+
+<div class="park-search">
+
+  <%= form_tag(park_path(@id), method: :get) do %>
+    <%= text_field_tag :park %>
+    <%= submit_tag 'Search' %>
+  <% end %>
+
+ <% if @parks.length != 0 %>
+  <ul>
+    <% @parks.each do |name| %>
+      <li>
+        <h3 class="park-name"><%= name.name %></h3><br>
+          <%=link_to name.description, park_path %><br>
+          <%= name.state %><br>
+          <%= name.img_url %><br>
+          <%= name.link_url %><br>
+      </li>
+    <% end %>
+  </ul>
+  <% end %>
+
+</div>

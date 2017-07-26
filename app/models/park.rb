@@ -21,6 +21,14 @@ class Park < ApplicationRecord
     numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 5 },
     allow_nil: true
 
+  def self.search(park)
+    if park
+      where('name LIKE ?', "%#{park}%")
+    else
+      @parks = ''
+    end
+  end
+
   has_many :reviews
   has_many :follows
   has_many :users, through: :follows

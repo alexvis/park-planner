@@ -1,5 +1,6 @@
 import React from 'react'
 import ReviewTile from '../components/ReviewTile'
+import NewReviewForm from '../components/NewReviewForm'
 
 class ParkReviews extends React.Component {
   constructor(props) {
@@ -41,6 +42,7 @@ class ParkReviews extends React.Component {
     })
     return(
       <div>
+        <NewReviewForm />
         {reviews}
       </div>
     )
