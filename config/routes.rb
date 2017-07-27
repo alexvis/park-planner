@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :welcome, only: [:index]
   resources :users
-  resources :parks, only: [:show]
+  resources :parks, only: [:show, :destroy]
+  resources :reviews, only: [:destroy]
 
   namespace :api do
     namespace :v1 do
