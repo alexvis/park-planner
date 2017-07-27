@@ -65,7 +65,7 @@ class ParkShow extends React.Component {
     let parkName
     if(this.state.park) {
       ratings = [
-        {name: "avg_rating",  value: this.state.park.avg_rating}
+        {name: "Average Rating: ",  value: this.state.park.avg_rating}
       ]
       parkName = this.state.park.name;
     }
