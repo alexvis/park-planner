@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>New Review</h1>
+    <p>
+    A new review has been posted for <%= @park.name %>. You can view it at <%= park_url(@park, host: 'parkplanner.heroku.com') %>
+    </p>
+  </body>
+</html>
