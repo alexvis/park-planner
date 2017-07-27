@@ -192,7 +192,7 @@ class ReviewFormContainer extends React.Component {
             handleSelect={this.handleSceneryRating}
           />
           <div className="button-group">
-            <input className="button" type="submit" value="Submit" />
+            <input id="submitButton" className="button" type="submit" value="Submit" />
           </div>
         </form>
       </div>

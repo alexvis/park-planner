@@ -1,5 +1,4 @@
 import VoteButton from '../../src/components/VoteButton';
-import ReviewTile from '../../src/components/ReviewTile';
 
 describe('VoteButton', ()=> {
   let wrapper;
@@ -11,10 +10,6 @@ describe('VoteButton', ()=> {
       />
     )
   });
-
-  it('should return true', () => {
-    expect(true).toEqual(true)
-  })
 
   it('should render a button tag with text Up by default', () => {
     expect(wrapper.find("button#upvote").text()).toMatch("Up")
