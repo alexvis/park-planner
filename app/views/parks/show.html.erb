@@ -3,20 +3,3 @@
 <div id="app" data-park_id= <%= @id %> data-user_id= <%= current_user && current_user.id %> >
 
 </div>
-
-
-
-<%= form_for current_user, html: { multipart: true } do |f| %>
-  <p>
-    <%= image_tag(current_user.profile_photo) if current_user.profile_photo? %>
-    <% if current_user.profile_photo? %>
-    <% else %>
-      <label>Upload Picture</label>
-      <%= f.file_field :profile_photo %>
-      <div class="actions">
-        <%= f.submit "Upload Picture" %>
-      </div>
-    <% end %>
-  </p>
-
-<% end %>

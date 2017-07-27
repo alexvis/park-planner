@@ -88,7 +88,7 @@ class ParkShow extends React.Component {
           <ParkInfo ratings={ratings} />
         }
 
-        <ParkFormContainer addNewPark={this.addNewPark} />
+        {this.props.userId &&<ParkFormContainer addNewPark={this.addNewPark} />}
 
         <div>
           <ParkReviews

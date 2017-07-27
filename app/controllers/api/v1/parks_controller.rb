@@ -12,7 +12,6 @@ class Api::V1::ParksController < ApplicationController
 
   def create
     data = JSON.parse(request.body.read)
-    # Park.create(data)
     park = Park.new(data)
     park.save
     render json: data

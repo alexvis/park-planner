@@ -44,20 +44,22 @@ class ParkReviews extends React.Component {
         <ReviewTile
           key = {review.id}
           reviewContent = {review}
+          userId = {this.props.user_id}
         />
       )
     })
 
     return(
-  
+
 
       <div>
         <div>
+          {this.props.user_id &&
           <ReviewFormContainer
             parkId = {this.props.park_id}
             userId = {this.props.user_id}
             handleFormResponse={this.handleFormResponse}
-          />
+          />}
         </div>
         <div>
           {reviews}

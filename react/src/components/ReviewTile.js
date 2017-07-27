@@ -31,12 +31,12 @@ class ReviewTile extends React.Component {
         <p id="rating">{this.props.reviewContent.park_rating}</p>
         <p id="upvotes">Upvotes: {this.state.numUpvotes}</p>
         <p id="downvotes">Downvotes: {this.state.numDownvotes}</p>
-        <VoteButton
+        {this.props.userId &&<VoteButton
           reviewId={this.props.reviewContent.id}
           userId={this.props.reviewContent.user_id}
           changeUpvotes={this.changeUpvotes}
           changeDownvotes={this.changeDownvotes}
-        />
+        />}
       </div>
     )
   }
