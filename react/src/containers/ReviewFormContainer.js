@@ -126,7 +126,8 @@ class ReviewFormContainer extends React.Component {
     }).then(response => response.json()
     ).then(body => {
       console.log(body);
-      this.props.handleFormResponse(body)
+      this.props.handleFormResponse(body.review);
+      this.props.setPark(body.park);
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
   }

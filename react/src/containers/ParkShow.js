@@ -12,6 +12,11 @@ class ParkShow extends React.Component {
     }
     this.addNewPark = this.addNewPark.bind(this)
     this.handleFormResponse = this.handleFormResponse.bind(this);
+    this.setPark = this.setPark.bind(this);
+  }
+
+  setPark(p) {
+    this.setState( {park: p} )
   }
 
   handleFormResponse(newPark) {
@@ -99,6 +104,7 @@ class ParkShow extends React.Component {
           <ParkReviews
           park_id = {this.props.parkId}
           user_id = {this.props.userId}
+          setPark={this.setPark}
           />
         </div>
 
