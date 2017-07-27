@@ -1,10 +1,6 @@
 import React from 'react'
 import ReviewTile from '../components/ReviewTile'
-<<<<<<< HEAD
-import NewReviewForm from '../components/NewReviewForm'
-=======
 import ReviewFormContainer from './ReviewFormContainer'
->>>>>>> master
 
 class ParkReviews extends React.Component {
   constructor(props) {
@@ -55,6 +51,7 @@ class ParkReviews extends React.Component {
     return(
   
 
+      <div>
         <div>
           <ReviewFormContainer
             parkId = {this.props.park_id}
@@ -65,6 +62,7 @@ class ParkReviews extends React.Component {
         <div>
           {reviews}
         </div>
+      </div>
 
     )
   }

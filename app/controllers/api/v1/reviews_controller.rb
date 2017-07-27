@@ -6,6 +6,7 @@ class Api::V1::ReviewsController < ApplicationController
   def index
     park = Park.find(params[:park_id])
     reviews = park.reviews
+    reviews = reviews.sort_by { |r| (r.num_downvotes - r.num_upvotes) }
     render json: reviews
   end
 
