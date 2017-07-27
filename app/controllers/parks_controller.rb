@@ -47,6 +47,10 @@ class ParksController < ApplicationController
     @id = params[:id]
   end
 
+  def new
+    @id = params[:id]
+  end
+
   def destroy
     @park = Park.find(params[:id])
     @park.destroy

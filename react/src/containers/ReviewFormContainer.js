@@ -29,6 +29,9 @@ class ReviewFormContainer extends React.Component {
     this.validateDropdownSelection = this.validateDropdownSelection.bind(this);
   }
 
+
+
+
   handleChange(event) {
     let value = event.target.value;
     let name = event.target.name;
