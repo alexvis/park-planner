@@ -1,8 +1,10 @@
 class UsersController < ApplicationController
-  before_action :authorize_user, only: [:index]
+  before_action :authorize_user, only: [:index, :destroy]
 
   def index
     @users = User.all
+    @reviews = Review.all
+    @parks = Park.all
   end
 
   def show
@@ -12,6 +14,12 @@ class UsersController < ApplicationController
   end
 
   def create
+  end
+
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    redirect_to users_path, notice: 'User was successfully destroyed.'
   end
 
   def update

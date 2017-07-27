@@ -1,6 +1,10 @@
 import React from 'react'
 import ReviewTile from '../components/ReviewTile'
+<<<<<<< HEAD
 import NewReviewForm from '../components/NewReviewForm'
+=======
+import ReviewFormContainer from './ReviewFormContainer'
+>>>>>>> master
 
 class ParkReviews extends React.Component {
   constructor(props) {
@@ -8,6 +12,13 @@ class ParkReviews extends React.Component {
     this.state = {
       reviewsArray: []
      }
+     this.handleFormResponse = this.handleFormResponse.bind(this);
+   }
+
+   handleFormResponse(newReview) {
+     this.setState(prevState => ({
+       reviewsArray: [...prevState.reviewsArray, newReview]
+     }))
    }
 
    componentDidMount() {
@@ -32,7 +43,7 @@ class ParkReviews extends React.Component {
   render(){
     let reviews
     if(this.state.reviewsArray.length != 0)
-    reviews = this.state.reviewsArray.map (review => {
+      reviews = this.state.reviewsArray.map (review => {
       return(
         <ReviewTile
           key = {review.id}
@@ -40,16 +51,23 @@ class ParkReviews extends React.Component {
         />
       )
     })
+
     return(
-      <div>
-        <NewReviewForm />
-        {reviews}
-      </div>
+  
+
+        <div>
+          <ReviewFormContainer
+            parkId = {this.props.park_id}
+            userId = {this.props.user_id}
+            handleFormResponse={this.handleFormResponse}
+          />
+        </div>
+        <div>
+          {reviews}
+        </div>
+
     )
   }
 }
 
-
-
-
-  export default ParkReviews;
+export default ParkReviews;

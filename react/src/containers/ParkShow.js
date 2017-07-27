@@ -43,8 +43,8 @@ class ParkShow extends React.Component {
     let followButton
     if(this.state.park && this.props.userId) {
       followButton = <FollowButton
-	parkId={this.state.park.id}
-	userId={this.props.userId}
+	     parkId={this.state.park.id}
+       userId={this.props.userId}
       />
     }
 
@@ -61,6 +61,7 @@ class ParkShow extends React.Component {
         <div>
           <ParkReviews
           park_id = {this.props.parkId}
+          user_id = {this.props.userId}
           />
         </div>
       </div>
