@@ -41,7 +41,7 @@
         <br>
         <% @reviews.each do |r| %>
           <div class="panel">
-            <h6><%= Park.find_by_id(r.park_id).name %></h6>
+            <h6><%= r.user.follows[0].park.name %></h6>
             <p>You said: "<%= r.comment %>"</p>
           </div>
         <% end %>

@@ -10,6 +10,7 @@ class UsersController < ApplicationController
   def show
     @parks = current_user.parks
     @reviews = current_user.reviews
+    binding.pry
   end
 
   def edit
