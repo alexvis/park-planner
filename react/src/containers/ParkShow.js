@@ -26,7 +26,6 @@ class ParkShow extends React.Component {
         .then((response) => response.json())
         .then((responseData) => {
           this.setState({park: responseData.park})
-          console.log("Park setState succeeded")
         })
         .catch(error => console.error(`Error in fetch: ${error.message}`))
     }
