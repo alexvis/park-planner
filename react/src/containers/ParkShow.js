@@ -52,10 +52,11 @@ componentDidMount() {
 
     let followButton
     if(this.state.park && this.props.userId) {
-      followButton = <FollowButton
-                      	parkId={this.state.park.id}
-                      	userId={this.props.userId}
-                      />
+      followButton =
+      <FollowButton
+	     parkId={this.state.park.id}
+       userId={this.props.userId}
+      />
     }
 
     return(
@@ -72,6 +73,7 @@ componentDidMount() {
         <div>
           <ParkReviews
           park_id = {this.props.parkId}
+          user_id = {this.props.userId}
           />
         </div>
 
