@@ -11,10 +11,6 @@ describe('ParkShow', ()=> {
       )
     });
 
-  it('should return true', () => {
-    expect(true).toEqual(true)
-  })
-
   it('should render a ParkInfo component', () => {
     wrapper.setState({
       park:{ avg_rating: 2.9 }

@@ -11,10 +11,6 @@ describe('ParkReviews', ()=> {
       )
     });
 
-  it('should return true', () => {
-    expect(true).toEqual(true)
-  })
-
   it('should render a ReviewTile component', () => {
     wrapper.setState({
       reviewsArray:[{ comment: "I love this park", park_rating: 5 }]

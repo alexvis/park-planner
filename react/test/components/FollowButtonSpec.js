@@ -12,10 +12,6 @@ describe('FollowButton', ()=> {
       )
     });
 
-  it('should return true', () => {
-    expect(true).toEqual(true)
-  })
-
   it('should not render a button tag by default', () => {
     expect(wrapper.find("button")).not.toBePresent()
   })
