@@ -17,11 +17,6 @@ describe('RatingTile', ()=> {
   })
 
   it('should render the name', () => {
-    expect(wrapper.find("p#name").text()).toMatch("Test Name")
+    expect(wrapper.find("p").text()).toMatch("Test Name: 3.4")
   })
-
-  it('should render the value', () => {
-    expect(wrapper.find("p#value").text()).toMatch("3.4")
-  })
-
 })
