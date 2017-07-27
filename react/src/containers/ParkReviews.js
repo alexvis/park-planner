@@ -63,6 +63,7 @@ class ParkReviews extends React.Component {
           />}
         </div>
         <div>
+          <h3>Reviews</h3>
           {reviews}
         </div>
       </div>
