@@ -4,7 +4,11 @@ class ReviewsController < ApplicationController
   def destroy
     @review = Review.find(params[:id])
     @review.destroy
-    redirect_to users_path, notice: 'Review was successfully destroyed.'
+    if current_user.admin?
+      redirect_to users_path, notice: 'Review was successfully destroyed.'
+    else
+      redirect_to user_path(current_user), notice: 'Review was successfully destroyed.'
+    end
   end
 
   private

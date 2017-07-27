@@ -8,9 +8,9 @@ class UsersController < ApplicationController
   end
 
   def show
-    @parks = current_user.parks
+    @parks = Park.all
+    @follows = current_user.follows
     @reviews = current_user.reviews
-    binding.pry
   end
 
   def edit
