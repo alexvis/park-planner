@@ -54,7 +54,7 @@ class VoteButton extends React.Component {
     else 
       this.props.changeDownvotes(1)
     if(this.state.voting === true)
-      this.props.changeUpnvotes(-1)
+      this.props.changeUpvotes(-1)
   }
 
   handleVoteClick(tf) {
