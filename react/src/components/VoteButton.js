@@ -38,11 +38,23 @@ class VoteButton extends React.Component {
   handleUpvoteClick(event) {
     console.log("Upvote Clicked")
     this.handleVoteClick(true)
+    if(this.state.voting === true)
+      this.props.changeUpvotes(-1)
+    else 
+      this.props.changeUpvotes(1)
+    if(this.state.voting === false)
+      this.props.changeDownvotes(-1)
   }
 
   handleDownvoteClick(event) {
     console.log("Downvote Clicked")
     this.handleVoteClick(false)
+    if(this.state.voting === false)
+      this.props.changeDownvotes(-1)
+    else 
+      this.props.changeDownvotes(1)
+    if(this.state.voting === true)
+      this.props.changeUpnvotes(-1)
   }
 
   handleVoteClick(tf) {
