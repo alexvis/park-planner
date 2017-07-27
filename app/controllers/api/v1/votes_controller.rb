@@ -11,8 +11,8 @@ class Api::V1::VotesController < ApplicationController
   end
 
   def create
-    # Toggles creating and deleting the voting entry
-    # in order to vote and unvote
+    # Creates or updates a Vote db entry
+    # to match the post body 
     data = JSON.parse(request.body.read)
     data_vote = data["vote"]
     vote = Vote.find_by(
@@ -21,13 +21,14 @@ class Api::V1::VotesController < ApplicationController
     )
 
     if vote
-      # Vote exists, destroy it
-      Vote.destroy(vote.id)
-      render json: { voting: false }
+      # Vote exists, just change its vote key
+      vote.vote = data_vote["vote"]
+      vote.save
+      render json: { voting: data_vote["vote"]}
     else
       # Vote does not exist, create it
       Vote.create(data_vote)
-      render json: { voting: true }
+      render json: { voting: data_vote["vote"]}
     end
   end
 end

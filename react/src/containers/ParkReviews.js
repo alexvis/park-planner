@@ -10,6 +10,7 @@ class ParkReviews extends React.Component {
    }
 
    componentDidMount() {
+     console.log("Fetching reviews")
      let parkId = this.props.park_id;
      fetch(`/api/v1/parks/${parkId}/reviews`)
        .then(response => {
@@ -23,15 +24,16 @@ class ParkReviews extends React.Component {
        })
        .then((response) => response.json())
        .then((responseData) => {
+         console.log(responseData.reviews)
          this.setState({reviewsArray: responseData.reviews})
+         console.log("Finished Review setState")
        })
        .catch(error => console.error(`Error in fetch: ${error.message}`))
      }
 
   render(){
     let reviews
-    if(this.state.reviewsArray.length != 0)
-    reviews = this.state.reviewsArray.map (review => {
+    reviews = this.state.reviewsArray.map(review => {
       return(
         <ReviewTile
           key = {review.id}

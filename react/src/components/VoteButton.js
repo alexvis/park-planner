@@ -8,6 +8,7 @@ class VoteButton extends React.Component {
     }
     this.handleVoteClick = this.handleVoteClick.bind(this)
     this.handleUpvoteClick = this.handleUpvoteClick.bind(this)
+    this.handleDownvoteClick = this.handleDownvoteClick.bind(this)
 
   }
 
@@ -27,6 +28,7 @@ class VoteButton extends React.Component {
     })
     .then(response => response.json())
     .then(body => {
+      console.log("VoteButton return response")
       console.log(body);
       this.setState( {voting: body.voting} )
     })
@@ -35,16 +37,24 @@ class VoteButton extends React.Component {
 
   handleUpvoteClick(event) {
     console.log("Upvote Clicked")
-    this.setState(prevState => ({
-      voting: (prevState.voting === true ? null : true)
-    }))
+    handleVoteClick(true)
   }
 
-  handleVoteClick(event) {
+  handleDownvoteClick(event) {
+    console.log("Downvote Clicked")
+    handleVoteClick(false)
+  }
+
+  handleVoteClick(tf) {
+    // Asks the database to set the entry to
+    // null if the value is already the same as the button
+    // true or false if the button clicked
+    //  was not the current setting
     let data = {
       vote: {
-	       rating_id: this.props.ratingId,
-         user_id: this.props.userId
+        review_id: this.props.reviewId,
+        user_id: this.props.userId,
+        vote: (this.state.voting === tf ? null : tf)
       }
     };
     let jsonStringData = JSON.stringify(data);
@@ -53,21 +63,22 @@ class VoteButton extends React.Component {
       method: 'post',
       body: jsonStringData
     }).then(response => {
-	     if (response.ok) {
-	        return response;
-	     } else {
-	        let errorMessage = `${response.status} (${response.statusText})`,
-	        error = new Error(errorMessage);
-	        throw(error);
-	     }
-    })
-    .then(response => response.json())
-    .then(body => {
-	     console.log(body);
-	     this.setState( {voting: body.voting} )
-    })
-    .catch(error => console.error(`Error in fetch: ${error.message}`));
+        if (response.ok) {
+          return response;
+        } else {
+          let errorMessage = `${response.status} (${response.statusText})`,
+              error = new Error(errorMessage);
+          throw(error);
+        }
+      })
+      .then(response => response.json())
+      .then(body => {
+        console.log(body);
+        this.setState( {voting: body.voting} )
+      })
+      .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
+
 
   render() {
     let upvoteButton = <button onClick={this.handleUpvoteClick}>{this.state.voting === true ? "Unup" : "Up"}</button>;
