@@ -37,12 +37,12 @@ class VoteButton extends React.Component {
 
   handleUpvoteClick(event) {
     console.log("Upvote Clicked")
-    handleVoteClick(true)
+    this.handleVoteClick(true)
   }
 
   handleDownvoteClick(event) {
     console.log("Downvote Clicked")
-    handleVoteClick(false)
+    this.handleVoteClick(false)
   }
 
   handleVoteClick(tf) {
@@ -82,7 +82,7 @@ class VoteButton extends React.Component {
 
   render() {
     let upvoteButton = <button onClick={this.handleUpvoteClick}>{this.state.voting === true ? "Unup" : "Up"}</button>;
-    let downvoteButton = <button>{this.state.voting === false ? "Undown" : "Down"}</button>;
+    let downvoteButton = <button onClick={this.handleDownvoteClick}>{this.state.voting === false ? "Undown" : "Down"}</button>;
 
     return(
       <div>

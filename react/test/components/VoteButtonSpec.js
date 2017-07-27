@@ -1,13 +1,13 @@
 import VoteButton from '../../src/components/VoteButton';
+import ReviewTile from '../../src/components/ReviewTile';
 
 describe('VoteButton', ()=> {
   let wrapper;
-
+  let review = {comment: "hello alex", park_rating: 5, park_id: 1, user_id: 1}
     beforeEach(() => {
       wrapper = mount(
-        <VoteButton
-	  reviewId={1}
-	  userId={1}
+        <ReviewTile
+          reviewContent = {review}
         />
       )
     });
@@ -36,4 +36,3 @@ describe('VoteButton', ()=> {
     expect(wrapper.find("button")[1].text()).toMatch("Undown")
   })
 })
-
