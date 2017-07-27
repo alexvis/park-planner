@@ -62,33 +62,40 @@ class VoteButton extends React.Component {
     fetch('/api/v1/votes', {
       method: 'post',
       body: jsonStringData
-    }).then(response => {
-        if (response.ok) {
-          return response;
-        } else {
-          let errorMessage = `${response.status} (${response.statusText})`,
-              error = new Error(errorMessage);
-          throw(error);
-        }
-      })
-      .then(response => response.json())
-      .then(body => {
-        console.log(body);
-        this.setState( {voting: body.voting} )
-      })
-      .catch(error => console.error(`Error in fetch: ${error.message}`));
+    })
+    .then(response => {
+      if (response.ok) {
+        return response;
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`,
+            error = new Error(errorMessage);
+        throw(error);
+      }
+    })
+    .then(response => response.json())
+    .then(body => {
+      console.log(body);
+      this.setState( {voting: body.voting} )
+    })
+    .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
 
   render() {
-    let upvoteButton = <button onClick={this.handleUpvoteClick}>{this.state.voting === true ? "Unup" : "Up"}</button>;
-    let downvoteButton = <button onClick={this.handleDownvoteClick}>{this.state.voting === false ? "Undown" : "Down"}</button>;
+    let upvoteButton =
+      <button id="upvote" onClick={this.handleUpvoteClick}>
+        {this.state.voting === true ? "Unup" : "Up"}
+      </button>;
+    let downvoteButton =
+      <button id="downvote" onClick={this.handleDownvoteClick}>
+        {this.state.voting === false ? "Undown" : "Down"}
+      </button>;
 
     return(
       <div>
-          <p>Vote Button</p>
-	       {upvoteButton}
-         {downvoteButton}
+        <p>Vote Button</p>
+        {upvoteButton}
+        {downvoteButton}
       </div>
     )
   }
