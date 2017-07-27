@@ -17,10 +17,6 @@ describe('ParkInfo', ()=> {
       )
     });
 
-  it('should return true', () => {
-    expect(true).toEqual(true)
-  })
-
   it('should render a RatingTile if there is a rating', () => {
     expect(wrapper.find(RatingTile)).toBePresent()
   })
