@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import ParkTextField from '../components/ParkTextField'
-import ParkDropDown from '../components/ParkDropDown'
+import TextField from '../components/TextField'
+import StarDropdown from '../components/StarDropdown'
 
 class ParkFormContainer extends Component{
   constructor(props){
@@ -161,72 +161,72 @@ handleCampingAvgRating(event){
     return(
       <form className="new-park-form callout" onSubmit={this.handleFormSubmit}>
           {this.state.nameError}
-        <ParkTextField
+        <TextField
           content={this.state.name}
           label="Name"
           name="name"
-          onChange={this.handleParkName}
+          handleChange={this.handleParkName}
         />
 
-        <ParkTextField
+        <TextField
           content={this.state.description}
           label="Description"
           name="description"
-          onChange={this.handleParkDescription}
+          handleChange={this.handleParkDescription}
         />
          {this.state.stateError}
-        <ParkTextField
+        <TextField
           content={this.state.state}
           label="State"
           name="state"
-          onChange={this.handleParkState}
+          handleChange={this.handleParkState}
         />
 
-        <ParkTextField
+        <TextField
           content={this.state.img_url}
           label="Pincture"
           name="img_url"
-          onChange={this.handleParkImge}
+          handleChange={this.handleParkImge}
         />
         {this.state.linkError}
-        <ParkTextField
+        <TextField
           content={this.state.linkUrl}
           label="Park Link"
           name="linkUrl"
-          onChange={this.handleParkLink}
+          handleChange={this.handleParkLink}
         />
 
-        <ParkDropDown
+        <StarDropdown
             label={'How good is this Park?'}
             rating={this.state.avgRating}
             handleSelect={this.handleParkAveRanking}
           />
 
-          <ParkDropDown
+          <StarDropdown
               label={'How friendly is this Park for Dogs?'}
               rating={this.state.dogFriendlyAvgRating}
               handleSelect={this.handleDogFriendlyAvgRating}
             />
 
-        <ParkDropDown
+        <StarDropdown
             label={'How good is this park for camping?'}
             rating={this.state.campingAvgRating}
             handleSelect={this.handleCampingAvgRating}
           />
 
-          <ParkDropDown
+          <StarDropdown
               label={'How good is this park playgroun?'}
               rating={this.state.playgroundAvgRating}
               handleSelect={this.handlePlaygroundAvgRating}
             />
 
-          <ParkDropDown
+          <StarDropdown
               label={'How good is this park for hiking?'}
               rating={this.state.hikingAvgRating}
               handleSelect={this.handleHikingAvgRating}
             />
 
-            <ParkDropDown
+            <StarDropdown
                 label={'How nice is this park looks?'}
                 rating={this.state.sceneryAvgRatin}
                 handleSelect={this.handleSceneryAvgRating}
