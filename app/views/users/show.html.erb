@@ -1,19 +1,51 @@
 
-
-<h1>Your <%= current_user.email %></h1>
-<h1>Hello <%= current_user.state %></h1>
-
-<%= form_for current_user, html: { multipart: true } do |f| %>
-  <p>
-    <%= image_tag(current_user.profile_photo) if current_user.profile_photo? %>
-    <% if current_user.profile_photo? %>
-    <% else %>
-      <label>Upload Picture</label>
-      <%= f.file_field :profile_photo %>
-      <div class="actions">
-        <%= f.submit "Upload Picture" %>
+<div class="row">
+  <div class="row">
+    <div class="small-6 columns">
+      <div class="panel">
+        <h4 align="center">Your Account Info</h3>
+        <br>
+        <%= form_for current_user, html: { multipart: true } do |f| %>
+        <p>
+          <%= image_tag(current_user.profile_photo) if current_user.profile_photo? %>
+          <% if current_user.profile_photo? %>
+          <% else %>
+          <label>Upload Picture</label>
+          <%= f.file_field :profile_photo %>
+          <div class="actions">
+            <%= f.submit "Upload Picture" %>
+          </div>
+          <% end %>
+        </p>
+        <% end %>
+        <p>Name: <%= current_user.first_name %> <%= current_user.last_name %></p>
+        <p>Location: <%= current_user.state %><br>
+        Email: <%= current_user.email %></p>
       </div>
-    <% end %>
-  </p>
-
-<% end %>
+    </div>
+    <div class="small-6 columns">
+      <div class="panel">
+        <h4 align="center">Parks You Follow</h3>
+        <br>
+        <% @parks.each do |p| %>
+          <div class="panel">
+            <h4><%= link_to "#{p.name}, #{p.state}", p %></h4>
+            <p><%= p.description %>description text<br>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="small-6 columns">
+      <div class="panel">
+        <h4 align="center">Your Reviews</h3>
+        <br>
+        <% @reviews.each do |r| %>
+          <div class="panel">
+            <h6><%= Park.find_by_id(r.park_id).name %></h6>
+            <p>You said: "<%= r.comment %>"</p>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
