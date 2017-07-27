@@ -19,15 +19,41 @@ class Api::V1::VotesController < ApplicationController
       review_id: data_vote["review_id"],
       user_id: data_vote["user_id"]
     )
+    review = Review.find(data_vote["review_id"])
 
+    newVote = data_vote["vote"]
     if vote
       # Vote exists, just change its vote key
+      oldVote = vote.vote
+      if oldVote == nil && newVote == true
+        review.num_upvotes += 1
+      elsif oldVote == nil && newVote == false
+        review.num_downvotes += 1
+      elsif oldVote == true && newVote == nil
+        review.num_upvotes -= 1
+      elsif oldVote == false && newVote == nil
+        review.num_downvotes -= 1
+      elsif oldVote == true && newVote == false
+        review.num_upvotes -= 1
+        review.num_downvotes += 1
+      elsif oldVote == false && newVote == true 
+        review.num_upvotes += 1
+        review.num_downvotes -= 1
+      end
+      review.save
+
       vote.vote = data_vote["vote"]
       vote.save
       render json: { voting: data_vote["vote"]}
     else
       # Vote does not exist, create it
       Vote.create(data_vote)
+      if newVote == true
+        review.num_upvotes += 1
+      elsif newVote == false
+        review.num_downvotes += 1
+      end
+      review.save
       render json: { voting: data_vote["vote"]}
     end
   end
