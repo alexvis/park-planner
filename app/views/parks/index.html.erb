@@ -1,1 +1,48 @@
 <h1>Hello from parks index!</h1>
+
+
+
+<div class="park-search">
+
+  <%= form_tag(parks_path, method: :get) do %>
+
+    <%= label :park, "Park Name" %><br />
+    <%= text_field_tag :park, nil %>
+
+  <%= form_tag(parks_path, method: :get) do %>
+
+    <%= label :state, "State" %><br />
+    <%= text_field_tag :state, nil %>
+
+    <h3> Filter by:</h3>
+    <%= check_box_tag(:dog_friendly_avg_rating) %>
+    <%= label_tag(:dog_friendly_avg_rating, "Dog Rating?") %>
+
+    <%= check_box_tag(:camping_avg_rating) %>
+    <%= label_tag(:camping_avg_rating, "Camping Area?") %>
+
+    <%= check_box_tag(:playground_avg_rating) %>
+    <%= label_tag(:playground_avg_rating, "Playground Area?") %>
+
+    <%= check_box_tag(:hiking_avg_rating) %>
+    <%= label_tag(:hiking_avg_rating, "Hiking Trail?") %><br>
+
+    <%= submit_tag 'Search' %>
+  <% end %>
+<% end %>
+</div>
+
+<div class="serch-result">
+ <% if @result_parks.length != 0 %>
+    <ul>
+      <% @result_parks.each do |p| %>
+        <li>
+          <h2><%=link_to p.name, park_path(p) %></h2><br>
+            <%= p.img_url %><br>
+            <a href="http:///<%=p.link_url %>"><%=p.link_url %></a>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+
+</div>
