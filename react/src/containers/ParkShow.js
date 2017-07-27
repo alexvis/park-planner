@@ -11,9 +11,16 @@ class ParkShow extends React.Component {
       park: null,
     }
     this.addNewPark = this.addNewPark.bind(this)
+    this.handleFormResponse = this.handleFormResponse.bind(this);
   }
 
-componentDidMount() {
+  handleFormResponse(newPark) {
+    this.setState(prevState => ({
+      park: [...prevState.park, newPark]
+    }))
+  }
+
+  componentDidMount() {
     let parkId = this.props.parkId;
     fetch(`/api/v1/parks/${parkId}`)
       .then(response => {
@@ -37,7 +44,20 @@ componentDidMount() {
     fetch('/api/v1/parks', {
       method: 'POST',
     body: JSON.stringify(formPayload)
+    }).then(response => {
+    	if (response.ok) {
+    	  return response;
+    	} else {
+        let errorMessage = `${response.status} (${response.statusText})`,
+        error = new Error(errorMessage);
+        throw(error);
+    	}
+    }).then(response => response.json()
+    ).then(body => {
+      console.log(body);
+      this.props.handleFormResponse(body)
     })
+    .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
   render() {

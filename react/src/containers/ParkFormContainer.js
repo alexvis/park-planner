@@ -130,13 +130,11 @@ handleCampingAvgRating(event){
   handleFormSubmit(event) {
     event.preventDefault();
     if(
-      this.validateNameSelection(this.state.name) & this.validateStateSelection(this.state.state) &
+      this.validateNameSelection(this.state.name) && this.validateStateSelection(this.state.state) &&
       this.validateLinkSelection(this.state.linkUrl)
-    )
-
-
-
-    {
+    ){
+      console.log("error")
+    } else {
     let formPayload = {
       id: this.state.id,
       name: this.state.name,
@@ -152,10 +150,29 @@ handleCampingAvgRating(event){
       scenery_avg_rating: this.state.sceneryAvgRating,
     };
     this.props.addNewPark(formPayload);
+    this.clearForm();
   }
   };
 
-
+  clearForm() {
+    this.setState({
+      nameError: '',
+      stateError: '',
+      linkError: '',
+      id: '',
+      name: '',
+      description: '',
+      state: '',
+      imgUrl: '',
+      linkUrl: '',
+      avgRating: '',
+      dogFriendlyAvgRating: '',
+      campingAvgRating: '',
+      playgroundAvgRating: '',
+      hikingAvgRating: '',
+      sceneryAvgRating: '',
+    })
+  }
 
   render(){
     return(

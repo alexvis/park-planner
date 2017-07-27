@@ -9,9 +9,12 @@ class Api::V1::ParksController < ApplicationController
     park = Park.find(params[:id])
     render json: {park: park}
   end
+
   def create
     data = JSON.parse(request.body.read)
-    Park.create(data)
+    # Park.create(data)
+    park = Park.new(data)
+    park.save
     render json: data
   end
 end
