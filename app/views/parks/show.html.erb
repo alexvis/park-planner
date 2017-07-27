@@ -5,25 +5,18 @@
 </div>
 
 
-<div class="park-search">
 
-  <%= form_tag(park_path(@id), method: :get) do %>
-    <%= text_field_tag :park %>
-    <%= submit_tag 'Search' %>
-  <% end %>
-
- <% if @parks.length != 0 %>
-  <ul>
-    <% @parks.each do |name| %>
-      <li>
-        <h3 class="park-name"><%= name.name %></h3><br>
-          <%=link_to name.description, park_path %><br>
-          <%= name.state %><br>
-          <%= name.img_url %><br>
-          <%= name.link_url %><br>
-      </li>
+<%= form_for current_user, html: { multipart: true } do |f| %>
+  <p>
+    <%= image_tag(current_user.profile_photo) if current_user.profile_photo? %>
+    <% if current_user.profile_photo? %>
+    <% else %>
+      <label>Upload Picture</label>
+      <%= f.file_field :profile_photo %>
+      <div class="actions">
+        <%= f.submit "Upload Picture" %>
+      </div>
     <% end %>
-  </ul>
-  <% end %>
+  </p>
 
-</div>
+<% end %>
