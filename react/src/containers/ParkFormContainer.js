@@ -84,13 +84,12 @@ class ParkFormContainer extends Component{
   }
 
   validateLinkSelection(selection) {
-    let com = "www.com"
+    let com = "www"
       if (!selection.includes(com)) {
-        this.setState({linkError: "Pleas enter a valid URL!"})
+        this.setState({linkError: "Pleas enter a valid URL! exemple:(www.web.com)"})
     }else{
       this.setState({linkError: ''})
     }
-    return this.state.linkError
   }
 
     handleMealSelection(event) {
@@ -173,7 +172,6 @@ handleCampingAvgRating(event){
     };
     this.addNewPark(formPayload);
     this.clearForm();
-
    }
   };
 

@@ -55,7 +55,6 @@ class ParkShow extends React.Component {
         {name: "Hiking Rating",  value: this.state.park.hiking_avg_rating},
         {name: "Scenery Rating",  value: this.state.park.scenery_avg_rating}
       ]
-      parkName = this.state.park.name;
     }
 
     let followButton
@@ -69,8 +68,6 @@ class ParkShow extends React.Component {
 
     return(
       <div>
-        <h1>React ParkShow</h1>
-        <p>{parkName}</p>
 	{followButton}
         {this.state.park &&
           <ParkInfo ratings={ratings} />

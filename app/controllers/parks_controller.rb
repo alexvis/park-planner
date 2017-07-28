@@ -45,6 +45,8 @@ class ParksController < ApplicationController
 
   def show
     @id = params[:id]
+    @park = Park.find(params[:id])
+
   end
 
   def new
