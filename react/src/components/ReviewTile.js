@@ -26,12 +26,12 @@ class ReviewTile extends React.Component {
 
   render() {
     return(
-      <div>
+      <div className="panel">
+        <p id="rating">Rating: {this.props.reviewContent.park_rating}</p>
         <p id="comment">{this.props.reviewContent.comment}</p>
-        <p id="rating">{this.props.reviewContent.park_rating}</p>
-        <p id="upvotes">Upvotes: {this.state.numUpvotes}</p>
-        <p id="downvotes">Downvotes: {this.state.numDownvotes}</p>
-        {this.props.userId &&<VoteButton
+        <p><span id="upvotes">Upvotes: {this.state.numUpvotes}, </span><span id="downvotes">Downvotes: {this.state.numDownvotes}</span></p>
+        {this.props.userId &&
+          <VoteButton
           reviewId={this.props.reviewContent.id}
           userId={this.props.reviewContent.user_id}
           changeUpvotes={this.changeUpvotes}

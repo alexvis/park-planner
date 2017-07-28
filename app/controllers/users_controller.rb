@@ -8,6 +8,9 @@ class UsersController < ApplicationController
   end
 
   def show
+    @parks = Park.all
+    @follows = current_user.follows
+    @reviews = current_user.reviews
   end
 
   def edit

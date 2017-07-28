@@ -10,6 +10,11 @@ class ParkShow extends React.Component {
       park: null,
     }
     this.handleFormResponse = this.handleFormResponse.bind(this);
+    this.setPark = this.setPark.bind(this);
+  }
+
+  setPark(p) {
+    this.setState( {park: p} )
   }
 
   handleFormResponse(newPark) {
@@ -43,7 +48,12 @@ class ParkShow extends React.Component {
     let parkName
     if(this.state.park) {
       ratings = [
-        {name: "avg_rating",  value: this.state.park.avg_rating}
+        {name: "Average Rating",  value: this.state.park.avg_rating},
+        {name: "Dog Friendly Rating",  value: this.state.park.dog_friendly_avg_rating},
+        {name: "Camping Rating",  value: this.state.park.camping_avg_rating},
+        {name: "Playground Rating",  value: this.state.park.playground_avg_rating},
+        {name: "Hiking Rating",  value: this.state.park.hiking_avg_rating},
+        {name: "Scenery Rating",  value: this.state.park.scenery_avg_rating}
       ]
       parkName = this.state.park.name;
     }
@@ -71,6 +81,7 @@ class ParkShow extends React.Component {
           <ParkReviews
           park_id = {this.props.parkId}
           user_id = {this.props.userId}
+          setPark={this.setPark}
           />
         </div>
 
