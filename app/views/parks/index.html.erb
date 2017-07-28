@@ -14,42 +14,48 @@
         <%= text_field_tag :park, nil %>
 
       <%= form_tag(parks_path, method: :get) do %>
-
         <%= label :state, "State" %><br />
         <%= text_field_tag :state, nil %>
 
-        <h3> Filter by:</h3>
-        <%= check_box_tag(:dog_friendly_avg_rating) %>
-        <%= label_tag(:dog_friendly_avg_rating, "Dog Rating?") %>
+        <%= submit_tag 'Search' %><br>
 
-        <%= check_box_tag(:camping_avg_rating) %>
-        <%= label_tag(:camping_avg_rating, "Camping Area?") %>
+        <div align="center">
+          <h4> Filter by</h4>
+          <%= check_box_tag(:dog_friendly_avg_rating) %>
+          <%= label_tag(:dog_friendly_avg_rating, "Good for Dogs") %>
 
-        <%= check_box_tag(:playground_avg_rating) %>
-        <%= label_tag(:playground_avg_rating, "Playground Area?") %>
+          <%= check_box_tag(:camping_avg_rating) %>
+          <%= label_tag(:camping_avg_rating, "Good for Camping") %>
 
-        <%= check_box_tag(:hiking_avg_rating) %>
-        <%= label_tag(:hiking_avg_rating, "Hiking Trail?") %><br>
+          <%= check_box_tag(:playground_avg_rating) %>
+          <%= label_tag(:playground_avg_rating, "Good Playgrounds") %>
 
-        <%= submit_tag 'Search' %><br><br>
+          <%= check_box_tag(:hiking_avg_rating) %>
+          <%= label_tag(:hiking_avg_rating, "Good for Hiking") %><br>
+        </div>
       <% end %>
     <% end %>
     </div>
+    <br><br>
 
     <div class="serch-result">
      <% if @result_parks.length != 0 %>
-     <h4 class="show-park-info">Click Park Name For More Information:</h4>
-
-        <ul>
-          <% @result_parks.each do |p| %>
-            <li>
-              <h4 class="show-park-info">Park Name: <%=link_to p.name, park_path(p) %></h4><br>
-                <%= p.img_url %>
-            </li>
-          <% end %>
-        </ul>
-      <% end %>
-
+       <h5 align="center">Click On a Park For More Information</h5>
+         <% @result_parks.each do |p| %>
+          <div class="panel">
+            <h4><%=link_to p.name, park_path(p) %></h4>
+            <h6><%= p.state %></h6>
+            <div>
+              <strong>Overall Park Rating: <%= p.avg_rating %></strong><br>
+              Dog friendly: <%= p.dog_friendly_avg_rating %><br>
+              Camping: <%= p.camping_avg_rating %><br>
+              Playgrounds: <%= p.playground_avg_rating %><br>
+              Scenery: <%= p.scenery_avg_rating %><br>
+              Hiking: <%= p.hiking_avg_rating %>
+            </div>
+          </div>
+        <% end %>
+    <% end %>
     </div>
   </div>
 </div>
