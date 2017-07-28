@@ -10,15 +10,12 @@ class ParkShow extends React.Component {
       park: null,
     }
     this.handleFormResponse = this.handleFormResponse.bind(this);
-<<<<<<< HEAD
-    // this.inputStyle = {backgroundColor: "green"};
-=======
     this.setPark = this.setPark.bind(this);
+    // this.inputStyle = {backgroundColor: "green"};
   }
 
   setPark(p) {
     this.setState( {park: p} )
->>>>>>> master
   }
 
   handleFormResponse(newPark) {
@@ -71,15 +68,10 @@ class ParkShow extends React.Component {
     }
 
     return(
-<<<<<<< HEAD
       <div className="panel">
         <h1>React ParkShow</h1>
         <p>{parkName}</p>
         {followButton}
-=======
-      <div>
-	{followButton}
->>>>>>> master
         {this.state.park &&
           <ParkInfo ratings={ratings} />
         }
@@ -98,5 +90,3 @@ class ParkShow extends React.Component {
 }
 
 export default ParkShow;
-
-// className
