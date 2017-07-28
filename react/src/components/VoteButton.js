@@ -97,13 +97,13 @@ class VoteButton extends React.Component {
     let upvoteClass = this.state.voting === true ? "voteSelect" : ""
     let upvoteButton =
       <button id="upvote" className={upvoteClass} onClick={this.handleUpvoteClick}>
-        {this.state.voting === true ? "Unup" : "Up"}
+        Up
       </button>;
 
     let downvoteClass = this.state.voting === false ? "voteSelect" : ""
     let downvoteButton =
       <button id="downvote" className={downvoteClass} onClick={this.handleDownvoteClick}>
-        {this.state.voting === false ? "Undown" : "Down"}
+        Down
       </button>;
 
     return(
