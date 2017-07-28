@@ -26,3 +26,33 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+# README
+This repository contains the source code for the Park Planner.
+
+## Technologies
+* Rails
+* React
+* Jasmine & Enzyme Testing
+* CarrierWave
+* Devise Authorization
+
+## Setup
+To get started, clone and run the following in your terminal:
+```
+bundle
+rake db:create
+rails s
+```
+
+In a separate terminal tab, run:
+```
+yarn
+yarn start
+```
+
+Navigate to: ```localhost:3000```
+
+To run ruby tests: ```rake```
+
+To run Enzyme tests:```yarn test```
