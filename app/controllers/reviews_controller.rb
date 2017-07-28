@@ -13,7 +13,6 @@ class ReviewsController < ApplicationController
 
   private
   def authorize_user
-    binding.pry
     if !user_signed_in?
       raise ActionController::RoutingError.new("Not Found")
     else !current_user.admin?
