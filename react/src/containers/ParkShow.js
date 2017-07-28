@@ -69,7 +69,6 @@ class ParkShow extends React.Component {
 
     return(
       <div className="panel">
-        <h1>React ParkShow</h1>
         <p>{parkName}</p>
         {followButton}
         {this.state.park &&
