@@ -27,11 +27,13 @@
       <div class="panel">
         <h4 align="center">Parks You Follow</h3>
         <br>
-        <% @parks.each do |p| %>
-          <div class="panel">
-            <h4><%= link_to "#{p.name}, #{p.state}", p %></h4>
-            <p><%= p.description %>description text<br>
-          </div>
+        <% unless @follows == [] %>
+          <% @follows.each do |f| %>
+            <div class="panel">
+              <h4><%= link_to "#{f.park.name}, #{f.park.state}", f.park %></h4>
+              <p><%= f.park.description %>description text<br>
+            </div>
+          <% end %>
         <% end %>
       </div>
     </div>
@@ -39,11 +41,20 @@
       <div class="panel">
         <h4 align="center">Your Reviews</h3>
         <br>
-        <% @reviews.each do |r| %>
-          <div class="panel">
-            <h6><%= Park.find_by_id(r.park_id).name %></h6>
-            <p>You said: "<%= r.comment %>"</p>
-          </div>
+        <% unless @reviews == [] %>
+          <% @reviews.each do |r| %>
+            <div class="panel">
+              <h6>
+                <% @parks.each do |p| %>
+                  <% if p.id == r.park_id %>
+                    <%= r.park.name %>
+                    <% end %>
+                <% end %>
+              </h6>
+              <p>You said: "<%= r.comment %>"</p>
+              <%= link_to 'Destroy', r, method: :delete, data: { confirm: 'Are you sure?' } %>
+            </div>
+          <% end %>
         <% end %>
       </div>
     </div>
