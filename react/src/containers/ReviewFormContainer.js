@@ -156,8 +156,8 @@ class ReviewFormContainer extends React.Component {
 
   render() {
     return(
-      <div>
-        <p>Write your own review</p>
+      <div className="panel">
+        <h3>Add your own review</h3>
         <form onSubmit={this.handleFormSubmit}>
           <TextField
             content={this.state.comment}

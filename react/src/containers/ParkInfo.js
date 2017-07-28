@@ -12,6 +12,7 @@ class ParkInfo extends React.Component {
 
     let ratings = this.props.ratings.map(rating => {
       return(
+
         <RatingTile
       	  key={rating.name}
       	  name={rating.name}
@@ -21,7 +22,8 @@ class ParkInfo extends React.Component {
     })
 
     return(
-      <div>
+      <div className="panel">
+        <h3>What users think about this park</h3>
       	{ratings}
       </div>
     )

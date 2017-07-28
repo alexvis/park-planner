@@ -68,21 +68,15 @@ class ParkShow extends React.Component {
     }
 
     return(
-      <div className="panel">
-        <p>{parkName}</p>
+      <div>
         {followButton}
-        {this.state.park &&
-          <ParkInfo ratings={ratings} />
-        }
+        {this.state.park && <ParkInfo ratings={ratings}/>}
 
-
-        <div>
-          <ParkReviews
+        <ParkReviews
           park_id = {this.props.parkId}
           user_id = {this.props.userId}
           setPark={this.setPark}
-          />
-        </div>
+        />
       </div>
     )
   }

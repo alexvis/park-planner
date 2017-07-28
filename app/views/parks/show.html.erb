@@ -1,16 +1,11 @@
-<div class="small-12 large-8 columns">
-  <h2>Park Name: <%= @park.name %></h2><br>
-  <% if @park.description %>
+<div class="row">
+  <div class="panel">
+    <h2 align="center"><%= @park.name %></h2><br>
+    <h4 align="center"><%= @park.state %></h4><br>
+    <% if @park.description %>
     <h4>Description: <%= @park.description %> </h4>
-  <% end  %>
-  <h4>State: <%= @park.state %> </h4>
-<<<<<<< HEAD
-  <h4>To visit Park webside clik the link: <%= link_to @park.link_url, "http://#{@park.link_url}" %></h4>
-=======
-  <h4>To visit Park website click the link: <%= link_to @park.link_url, "http://#{@park.link_url}" %></h4>
-
->>>>>>> master
-</div>
-
-<div id="app" data-park_id= <%= @id %> data-user_id= <%= current_user && current_user.id %> >
+    <% end  %>
+    <p><%= link_to "Go to park website", "http://#{@park.link_url}" %></p>
+    <div id="app" data-park_id= <%= @id %> data-user_id= <%= current_user && current_user.id %> ></div>
+  </div>
 </div>

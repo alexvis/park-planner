@@ -50,9 +50,11 @@ class ParkReviews extends React.Component {
     })
 
     return(
-
-
       <div>
+        <div className="panel">
+          <h3>Reviews</h3>
+          {reviews}
+        </div>
         <div>
           {this.props.user_id &&
           <ReviewFormContainer
@@ -61,10 +63,6 @@ class ParkReviews extends React.Component {
             handleFormResponse={this.handleFormResponse}
             setPark={this.props.setPark}
           />}
-        </div>
-        <div>
-          <h3>Reviews</h3>
-          {reviews}
         </div>
       </div>
 
