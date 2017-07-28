@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :welcome, only: [:index]
   resources :users
 
-  resources :parks, only: [:index, :show, :destroy]
+  resources :parks, only: [:index, :show, :destroy, :new]
   resources :reviews, only: [:destroy]
 
   namespace :api do

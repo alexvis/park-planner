@@ -38,8 +38,29 @@ class ParkFormContainer extends Component{
     this.validateNameSelection = this.validateNameSelection.bind(this);
     this.validateStateSelection = this.validateStateSelection.bind(this);
     this.validateLinkSelection = this.validateLinkSelection.bind(this);
+    this.addNewPark = this.addNewPark.bind(this);
+    this.clearForm = this.clearForm.bind(this);
   }
 
+  addNewPark(formPayload) {
+    fetch('/api/v1/parks', {
+      method: 'POST',
+    body: JSON.stringify(formPayload)
+    }).then(response => {
+    	if (response.ok) {
+    	  return response;
+    	} else {
+        let errorMessage = `${response.status} (${response.statusText})`,
+        error = new Error(errorMessage);
+        throw(error);
+    	}
+    }).then(response => response.json()
+    ).then(body => {
+        window.location.href='http://localhost:3000/parks/' + body.id;
+        this.props.handleFormResponse(body)
+    })
+    .catch(error => console.error(`Error in fetch: ${error.message}`));
+  }
 
 
   validateNameSelection(selection) {
@@ -63,12 +84,12 @@ class ParkFormContainer extends Component{
   }
 
   validateLinkSelection(selection) {
-      if (selection === '') {
-        this.setState({linkError: "Park webside can't be empty!"})
+    let com = "www"
+      if (!selection.includes(com)) {
+        this.setState({linkError: "Pleas enter a valid URL! exemple:(www.web.com)"})
     }else{
       this.setState({linkError: ''})
     }
-    return this.state.linkError
   }
 
     handleMealSelection(event) {
@@ -130,7 +151,7 @@ handleCampingAvgRating(event){
   handleFormSubmit(event) {
     event.preventDefault();
     if(
-      this.validateNameSelection(this.state.name) && this.validateStateSelection(this.state.state) &&
+      this.validateNameSelection(this.state.name) & this.validateStateSelection(this.state.state) &
       this.validateLinkSelection(this.state.linkUrl)
     ){
       console.log("error")
@@ -149,16 +170,13 @@ handleCampingAvgRating(event){
       hiking_avg_rating: this.state.hikingAvgRating,
       scenery_avg_rating: this.state.sceneryAvgRating,
     };
-    this.props.addNewPark(formPayload);
+    this.addNewPark(formPayload);
     this.clearForm();
-  }
+   }
   };
 
   clearForm() {
     this.setState({
-      nameError: '',
-      stateError: '',
-      linkError: '',
       id: '',
       name: '',
       description: '',
@@ -176,6 +194,8 @@ handleCampingAvgRating(event){
 
   render(){
     return(
+
+      <div class="row">
       <form className="new-park-form callout" onSubmit={this.handleFormSubmit}>
           {this.state.nameError}
         <TextField
@@ -249,15 +269,12 @@ handleCampingAvgRating(event){
                 handleSelect={this.handleSceneryAvgRating}
               />
 
-
-
-
         <div className="button-group">
           <button className="button" onClick={this.clearForm}>Clear</button>
           <input className="button" type="submit" value="Submit" />
         </div>
       </form>
-
+      </div>
     )
   }
 }
