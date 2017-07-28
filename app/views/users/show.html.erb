@@ -53,7 +53,7 @@
                   <% end %>
                 <% end %>
               </h6>
-              <% unless r.comment === "" %>
+              <% unless r.comment === "" || nil %>
                 <p>You said: "<%= r.comment %>"</p>
               <% end %>
               <p>
@@ -74,7 +74,7 @@
                   Playgrounds: <%= r.playground_rating %>
                 <% end %>
               </p>
-              <%= link_to 'Destroy', r, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <%= link_to 'Delete Review', r, method: :delete, data: { confirm: 'Are you sure?' } %>
             </div>
           <% end %>
         <% end %>

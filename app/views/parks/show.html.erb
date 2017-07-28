@@ -1,15 +1,11 @@
-<h1>Park Information:</h1>
-
-<div class="">
+<div class="small-12 large-8 columns">
   <h2>Park Name: <%= @park.name %></h2><br>
   <% if @park.description %>
-  <h4>Description: <%= @park.description %> </h4>
+    <h4>Description: <%= @park.description %> </h4>
   <% end  %>
   <h4>State: <%= @park.state %> </h4>
   <h4>To visit Park webside clik the link: <%= link_to @park.link_url, "http://#{@park.link_url}" %></h4>
-
 </div>
 
 <div id="app" data-park_id= <%= @id %> data-user_id= <%= current_user && current_user.id %> >
-
 </div>
