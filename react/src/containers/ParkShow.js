@@ -12,6 +12,7 @@ class ParkShow extends React.Component {
     }
     this.addNewPark = this.addNewPark.bind(this)
     this.handleFormResponse = this.handleFormResponse.bind(this);
+    // this.inputStyle = {backgroundColor: "green"};
   }
 
   handleFormResponse(newPark) {
@@ -80,10 +81,10 @@ class ParkShow extends React.Component {
     }
 
     return(
-      <div>
+      <div className="panel">
         <h1>React ParkShow</h1>
         <p>{parkName}</p>
-	{followButton}
+        {followButton}
         {this.state.park &&
           <ParkInfo ratings={ratings} />
         }
@@ -96,10 +97,11 @@ class ParkShow extends React.Component {
           user_id = {this.props.userId}
           />
         </div>
-
       </div>
     )
   }
 }
 
 export default ParkShow;
+
+// className

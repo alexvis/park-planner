@@ -29,7 +29,9 @@
           <div class="panel">
             <h4 align="center"><%= link_to "#{p.name}, #{p.state}", p %></h4>
             <p align="center">
-              "<%= p.description %>description text"
+              <% unless p.description === nil %>
+                "<%= p.description %>"
+              <% end %>
             </p>
             <p>
               Overall Rating: <%= p.avg_rating %><br>
