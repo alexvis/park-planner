@@ -28,3 +28,13 @@ a {
 .voteSelect {
   background-color: #8EE4AF;
 }
+
+.pic{
+  margin: auto;
+  background-image: url(park_pic.jpeg);
+  background-repeat: no-repeat;
+  background-position: center;
+
+  width: 80%;
+  height: 80%;
+}
