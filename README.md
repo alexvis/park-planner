@@ -3,26 +3,32 @@
 ![Coverage Status](https://coveralls.io/repos/alexvis/park-planner/badge.png)
 
 # README
+This repository contains the source code for the Park Planner.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Technologies
+* Ruby 2.3.3
+* Rails
+* React
+* Jasmine & Enzyme Testing
+* CarrierWave
+* Devise Authorization
 
-Things you may want to cover:
+## Setup
+To get started, clone and run the following in your terminal:
+```
+bundle
+rake db:create
+rake db:migrate
+rails s
+```
 
-* Ruby version
+In a separate terminal tab, run:
+```
+npm start
+```
 
-* System dependencies
+Navigate to: ```localhost:3000```
 
-* Configuration
+To run ruby tests: ```rake```
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+To run Enzyme tests, navigate to react folder: ```karma test```

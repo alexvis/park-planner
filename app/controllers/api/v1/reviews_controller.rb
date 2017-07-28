@@ -74,7 +74,7 @@ class Api::V1::ReviewsController < ApplicationController
 
 
     data = {
-      review: data,
+      review: review,
       park: park
     }
     render json: data

@@ -1,48 +1,55 @@
-<h1>Hello from parks index!</h1>
+
+<div class="row">
+  <div class="panel">
 
 
 
-<div class="park-search">
+  <h1 align="center">Serch for a Park</h1>
 
-  <%= form_tag(parks_path, method: :get) do %>
+    <div class="park-search">
 
-    <%= label :park, "Park Name" %><br />
-    <%= text_field_tag :park, nil %>
+      <%= form_tag(parks_path, method: :get) do %>
 
-  <%= form_tag(parks_path, method: :get) do %>
+        <%= label :park, "Park Name" %><br />
+        <%= text_field_tag :park, nil %>
 
-    <%= label :state, "State" %><br />
-    <%= text_field_tag :state, nil %>
+      <%= form_tag(parks_path, method: :get) do %>
 
-    <h3> Filter by:</h3>
-    <%= check_box_tag(:dog_friendly_avg_rating) %>
-    <%= label_tag(:dog_friendly_avg_rating, "Dog Rating?") %>
+        <%= label :state, "State" %><br />
+        <%= text_field_tag :state, nil %>
 
-    <%= check_box_tag(:camping_avg_rating) %>
-    <%= label_tag(:camping_avg_rating, "Camping Area?") %>
+        <h3> Filter by:</h3>
+        <%= check_box_tag(:dog_friendly_avg_rating) %>
+        <%= label_tag(:dog_friendly_avg_rating, "Dog Rating?") %>
 
-    <%= check_box_tag(:playground_avg_rating) %>
-    <%= label_tag(:playground_avg_rating, "Playground Area?") %>
+        <%= check_box_tag(:camping_avg_rating) %>
+        <%= label_tag(:camping_avg_rating, "Camping Area?") %>
 
-    <%= check_box_tag(:hiking_avg_rating) %>
-    <%= label_tag(:hiking_avg_rating, "Hiking Trail?") %><br>
+        <%= check_box_tag(:playground_avg_rating) %>
+        <%= label_tag(:playground_avg_rating, "Playground Area?") %>
 
-    <%= submit_tag 'Search' %>
-  <% end %>
-<% end %>
-</div>
+        <%= check_box_tag(:hiking_avg_rating) %>
+        <%= label_tag(:hiking_avg_rating, "Hiking Trail?") %><br>
 
-<div class="serch-result">
- <% if @result_parks.length != 0 %>
-    <ul>
-      <% @result_parks.each do |p| %>
-        <li>
-          <h2><%=link_to p.name, park_path(p) %></h2><br>
-            <%= p.img_url %><br>
-            <a href="http:///<%=p.link_url %>"><%=p.link_url %></a>
-        </li>
+        <%= submit_tag 'Search' %><br><br>
       <% end %>
-    </ul>
-  <% end %>
+    <% end %>
+    </div>
 
+    <div class="serch-result">
+     <% if @result_parks.length != 0 %>
+     <h4 class="show-park-info">Click Park Name For More Information:</h4>
+
+        <ul>
+          <% @result_parks.each do |p| %>
+            <li>
+              <h4 class="show-park-info">Park Name: <%=link_to p.name, park_path(p) %></h4><br>
+                <%= p.img_url %>
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
+
+    </div>
+  </div>
 </div>
