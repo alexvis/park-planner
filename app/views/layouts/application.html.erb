@@ -16,7 +16,9 @@
     <div class="top-bar">
         <ul class="menu">
           <% if user_signed_in?  %>
+
             <div class="left">
+              <li class="button"><%= link_to 'Add A Park', new_park_path %></li>
               <li class="button"><%= link_to "Back", :back %></li>
               <li class="button"><%= link_to 'Home', user_path(current_user) %></li>
             </div>
@@ -38,7 +40,7 @@
           <% end %>
         </ul>
       </div>
-        
+
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
