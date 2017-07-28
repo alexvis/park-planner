@@ -29,6 +29,9 @@ class ReviewFormContainer extends React.Component {
     this.validateDropdownSelection = this.validateDropdownSelection.bind(this);
   }
 
+
+
+
   handleChange(event) {
     let value = event.target.value;
     let name = event.target.name;
@@ -126,7 +129,8 @@ class ReviewFormContainer extends React.Component {
     }).then(response => response.json()
     ).then(body => {
       console.log(body);
-      this.props.handleFormResponse(body)
+      this.props.handleFormResponse(body.review);
+      this.props.setPark(body.park);
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
   }

@@ -59,9 +59,11 @@ class ParkReviews extends React.Component {
             parkId = {this.props.park_id}
             userId = {this.props.user_id}
             handleFormResponse={this.handleFormResponse}
+            setPark={this.props.setPark}
           />}
         </div>
         <div>
+          <h3>Reviews</h3>
           {reviews}
         </div>
       </div>

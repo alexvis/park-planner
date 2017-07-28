@@ -73,6 +73,10 @@ class Api::V1::ReviewsController < ApplicationController
     park.save
 
 
+    data = {
+      review: data,
+      park: park
+    }
     render json: data
   end
 end

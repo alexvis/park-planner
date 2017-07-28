@@ -12,11 +12,12 @@
     <link href="https://fonts.googleapis.com/css?family=Rubik+Mono+One" rel="stylesheet">
   </head>
 
-  <body>
+  <body> 
     <div class="top-bar">
         <% if user_signed_in?  %>
           <ul class="menu">
             <div class="left">
+              <li class="button"><%= link_to 'Add A Park', new_park_path %></li>
               <li class="button"><%= link_to "Back", :back %></li>
               <li class="button"><%= link_to "Search", parks_path %></li>
             </div>

@@ -2,7 +2,6 @@ import React from 'react'
 import ParkInfo from './ParkInfo'
 import FollowButton from '../components/FollowButton'
 import ParkReviews from './ParkReviews'
-import ParkFormContainer from './ParkFormContainer'
 
 class ParkShow extends React.Component {
   constructor(props) {
@@ -10,9 +9,16 @@ class ParkShow extends React.Component {
     this.state = {
       park: null,
     }
-    this.addNewPark = this.addNewPark.bind(this)
     this.handleFormResponse = this.handleFormResponse.bind(this);
+<<<<<<< HEAD
     // this.inputStyle = {backgroundColor: "green"};
+=======
+    this.setPark = this.setPark.bind(this);
+  }
+
+  setPark(p) {
+    this.setState( {park: p} )
+>>>>>>> master
   }
 
   handleFormResponse(newPark) {
@@ -41,34 +47,18 @@ class ParkShow extends React.Component {
   }
 
 
-  addNewPark(formPayload) {
-    fetch('/api/v1/parks', {
-      method: 'POST',
-    body: JSON.stringify(formPayload)
-    }).then(response => {
-    	if (response.ok) {
-    	  return response;
-    	} else {
-        let errorMessage = `${response.status} (${response.statusText})`,
-        error = new Error(errorMessage);
-        throw(error);
-    	}
-    }).then(response => response.json()
-    ).then(body => {
-      console.log(body);
-      this.props.handleFormResponse(body)
-    })
-    .catch(error => console.error(`Error in fetch: ${error.message}`));
-  }
-
   render() {
     let ratings
     let parkName
     if(this.state.park) {
       ratings = [
-        {name: "Average Rating: ",  value: this.state.park.avg_rating}
+        {name: "Average Rating",  value: this.state.park.avg_rating},
+        {name: "Dog Friendly Rating",  value: this.state.park.dog_friendly_avg_rating},
+        {name: "Camping Rating",  value: this.state.park.camping_avg_rating},
+        {name: "Playground Rating",  value: this.state.park.playground_avg_rating},
+        {name: "Hiking Rating",  value: this.state.park.hiking_avg_rating},
+        {name: "Scenery Rating",  value: this.state.park.scenery_avg_rating}
       ]
-      parkName = this.state.park.name;
     }
 
     let followButton
@@ -81,20 +71,25 @@ class ParkShow extends React.Component {
     }
 
     return(
+<<<<<<< HEAD
       <div className="panel">
         <h1>React ParkShow</h1>
         <p>{parkName}</p>
         {followButton}
+=======
+      <div>
+	{followButton}
+>>>>>>> master
         {this.state.park &&
           <ParkInfo ratings={ratings} />
         }
 
-        {this.props.userId &&<ParkFormContainer addNewPark={this.addNewPark} />}
 
         <div>
           <ParkReviews
           park_id = {this.props.parkId}
           user_id = {this.props.userId}
+          setPark={this.setPark}
           />
         </div>
       </div>

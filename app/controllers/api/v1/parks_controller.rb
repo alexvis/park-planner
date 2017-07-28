@@ -14,6 +14,8 @@ class Api::V1::ParksController < ApplicationController
     data = JSON.parse(request.body.read)
     park = Park.new(data)
     park.save
-    render json: data
+    if park.id
+      render json: {id: park.id}
+    end
   end
 end

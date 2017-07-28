@@ -25,23 +25,6 @@
       <div class="panel">
         <h4 align="center">Parks You Follow</h3>
         <br>
-        <% @parks.each do |p| %>
-          <div class="panel">
-            <h4 align="center"><%= link_to "#{p.name}, #{p.state}", p %></h4>
-            <p align="center">
-              <% unless p.description === nil %>
-                "<%= p.description %>"
-              <% end %>
-            </p>
-            <p>
-              Overall Rating: <%= p.avg_rating %><br>
-              Dog-Friendly: <%= p.dog_friendly_avg_rating %><br>
-              Camping: <%= p.camping_avg_rating %><br>
-              Scenery: <%= p.scenery_avg_rating %><br>
-              Hiking: <%= p.hiking_avg_rating %><br>
-              Playgrounds: <%= p.playground_avg_rating %>
-            </p>
-          </div>
         <% end %>
       </div>
     </div>
@@ -51,31 +34,40 @@
       <div class="panel">
         <h4 align="center">Your Reviews</h3>
         <br>
-        <% @reviews.each do |r| %>
-          <div class="panel">
-            <h6><%= link_to "#{Park.find_by_id(r.park_id).name}", (Park.find_by_id(r.park_id)) %></h6>
-            <% unless r.comment === "" %>
-              <p>You said: "<%= r.comment %>"</p>
-            <% end %>
-            <p>
-              Overall Rating: <%= r.park_rating %><br>
-              <% unless r.dog_friendly_rating === nil %>
-                Dog-Friendly: <%= r.dog_friendly_rating %><br>
+        <% unless @reviews == [] %>
+          <% @reviews.each do |r| %>
+            <div class="panel">
+              <h6>
+                <% @parks.each do |p| %>
+                  <% if p.id == r.park_id %>
+                    <%= link_to r.park.name, p %>
+                  <% end %>
+                <% end %>
+              </h6>
+              <% unless r.comment === "" %>
+                <p>You said: "<%= r.comment %>"</p>
               <% end %>
-              <% unless r.camping_rating === nil %>
-                Camping: <%= r.camping_rating %><br>
-              <% end %>
-              <% unless r.scenery_rating === nil %>
-                Scenery: <%= r.scenery_rating %><br>
-              <% end %>
-              <% unless r.hiking_rating === nil %>
-                Hiking: <%= r.hiking_rating %><br>
-              <% end %>
-              <% unless r.playground_rating === nil %>
-                Playgrounds: <%= r.playground_rating %>
-              <% end %>
-            </p>
-          </div>
+              <p>
+                Overall Rating: <%= r.park_rating %><br>
+                <% unless r.dog_friendly_rating === nil %>
+                  Dog-Friendly: <%= r.dog_friendly_rating %><br>
+                <% end %>
+                <% unless r.camping_rating === nil %>
+                  Camping: <%= r.camping_rating %><br>
+                <% end %>
+                <% unless r.scenery_rating === nil %>
+                  Scenery: <%= r.scenery_rating %><br>
+                <% end %>
+                <% unless r.hiking_rating === nil %>
+                  Hiking: <%= r.hiking_rating %><br>
+                <% end %>
+                <% unless r.playground_rating === nil %>
+                  Playgrounds: <%= r.playground_rating %>
+                <% end %>
+              </p>
+              <%= link_to 'Destroy', r, method: :delete, data: { confirm: 'Are you sure?' } %>
+            </div>
+          <% end %>
         <% end %>
       </div>
     </div>
