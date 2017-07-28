@@ -13,8 +13,13 @@ class ReviewsController < ApplicationController
 
   private
   def authorize_user
-    if !user_signed_in? || !current_user.admin? || !current_user.id == Review.find(params[:id]).user_id
+    binding.pry
+    if !user_signed_in?
       raise ActionController::RoutingError.new("Not Found")
+    else !current_user.admin?
+      unless current_user.id == Review.find(params[:id]).user_id
+        raise ActionController::RoutingError.new("Not Found")
+      end
     end
   end
 end
