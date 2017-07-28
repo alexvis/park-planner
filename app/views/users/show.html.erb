@@ -6,24 +6,22 @@
         <h4 align="center">Your Account Info</h3>
         <br>
         <%= form_for current_user, html: { multipart: true } do |f| %>
-        <p>
-          <%= image_tag(current_user.profile_photo) if current_user.profile_photo? %>
-          <% if current_user.profile_photo? %>
-          <% else %>
-          <label>Upload Picture</label>
-          <%= f.file_field :profile_photo %>
-          <div class="actions">
-            <%= f.submit "Upload Picture" %>
-          </div>
-          <% end %>
-        </p>
+          <p>
+            <%= image_tag(current_user.profile_photo) if current_user.profile_photo? %>
+              <% if current_user.profile_photo? %>
+              <% else %>
+                <label>Upload Picture</label>
+                <%= f.file_field :profile_photo %>
+                <div class="actions">
+                  <%= f.submit "Upload Picture" %>
+                </div>
+              <% end %>
+          </p>
         <% end %>
         <p>Name: <%= current_user.first_name %> <%= current_user.last_name %></p>
         <p>Location: <%= current_user.state %><br>
         Email: <%= current_user.email %></p>
       </div>
-    </div>
-    <div class="small-6 columns">
       <div class="panel">
         <h4 align="center">Parks You Follow</h3>
         <br>
@@ -31,11 +29,15 @@
           <% @follows.each do |f| %>
             <div class="panel">
               <h4><%= link_to "#{f.park.name}, #{f.park.state}", f.park %></h4>
-              <p><%= f.park.description %>description text<br>
+              <% unless f.park.description === nil %>
+                <p><%= f.park.description %><br>
+              <% end %>
             </div>
           <% end %>
         <% end %>
       </div>
+    </div>
+    <div class="small-6 columns">
     </div>
     <div class="small-6 columns">
       <div class="panel">
@@ -47,11 +49,31 @@
               <h6>
                 <% @parks.each do |p| %>
                   <% if p.id == r.park_id %>
-                    <%= r.park.name %>
-                    <% end %>
+                    <%= link_to r.park.name, p %>
+                  <% end %>
                 <% end %>
               </h6>
-              <p>You said: "<%= r.comment %>"</p>
+              <% unless r.comment === "" %>
+                <p>You said: "<%= r.comment %>"</p>
+              <% end %>
+              <p>
+                Overall Rating: <%= r.park_rating %><br>
+                <% unless r.dog_friendly_rating === nil %>
+                  Dog-Friendly: <%= r.dog_friendly_rating %><br>
+                <% end %>
+                <% unless r.camping_rating === nil %>
+                  Camping: <%= r.camping_rating %><br>
+                <% end %>
+                <% unless r.scenery_rating === nil %>
+                  Scenery: <%= r.scenery_rating %><br>
+                <% end %>
+                <% unless r.hiking_rating === nil %>
+                  Hiking: <%= r.hiking_rating %><br>
+                <% end %>
+                <% unless r.playground_rating === nil %>
+                  Playgrounds: <%= r.playground_rating %>
+                <% end %>
+              </p>
               <%= link_to 'Destroy', r, method: :delete, data: { confirm: 'Are you sure?' } %>
             </div>
           <% end %>

@@ -12,33 +12,34 @@
     <link href="https://fonts.googleapis.com/css?family=Rubik+Mono+One" rel="stylesheet">
   </head>
 
-  <body>
+  <body> 
     <div class="top-bar">
-        <ul class="menu">
-          <% if user_signed_in?  %>
-
+        <% if user_signed_in?  %>
+          <ul class="menu">
             <div class="left">
               <li class="button"><%= link_to 'Add A Park', new_park_path %></li>
               <li class="button"><%= link_to "Back", :back %></li>
-              <li class="button"><%= link_to 'Home', user_path(current_user) %></li>
+              <li class="button"><%= link_to "Search", parks_path %></li>
+            </div>
+            <div class="right">
+              <li class="button"><%= link_to 'My Account', user_path(current_user) %></li>
+              <li class="button"><%= link_to 'Edit Account Info', edit_user_registration_path %></li>
+              <li class="button"><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
             </div>
             <% if current_user.admin? %>
               <div class="right">
                 <li class="button"><%= link_to 'Admin', users_path %></li>
               </div>
             <% end %>
-            <div class="right">
-              <li class="left"><%= link_to "Search", parks_path %></li>
-              <li class="button"><%= link_to 'Edit Account Info', edit_user_registration_path %></li>
-              <li class="button"><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
-            </div>
-          <% else %>
+          </ul>
+        <% else %>
+          <ul>
             <div class="left">
               <li class="button"><%= link_to "Sign In", new_user_session_path %></li>
               <li class="button"><%= link_to "Sign Up", new_user_registration_path %></li>
             </div>
-          <% end %>
-        </ul>
+          </ul>
+        <% end %>
       </div>
 
     <p class="notice"><%= notice %></p>

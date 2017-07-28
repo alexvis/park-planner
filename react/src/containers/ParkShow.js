@@ -11,6 +11,7 @@ class ParkShow extends React.Component {
     }
     this.handleFormResponse = this.handleFormResponse.bind(this);
     this.setPark = this.setPark.bind(this);
+    // this.inputStyle = {backgroundColor: "green"};
   }
 
   setPark(p) {
@@ -67,8 +68,10 @@ class ParkShow extends React.Component {
     }
 
     return(
-      <div>
-	{followButton}
+      <div className="panel">
+        <h1>React ParkShow</h1>
+        <p>{parkName}</p>
+        {followButton}
         {this.state.park &&
           <ParkInfo ratings={ratings} />
         }
@@ -81,7 +84,6 @@ class ParkShow extends React.Component {
           setPark={this.setPark}
           />
         </div>
-
       </div>
     )
   }
