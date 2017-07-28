@@ -16,7 +16,7 @@ feature 'user signs in', %Q{
 
     expect(page).to have_content('Welcome Back!')
     expect(page).to have_content('Sign Out')
-    expect(page).to have_content('Home')
+    expect(page).to have_content('My Account')
     expect(page).to have_content('Your Account Info')
   end
   scenario 'a nonexistant email and password is supplied' do
@@ -29,7 +29,7 @@ feature 'user signs in', %Q{
     expect(page).to have_content('Invalid Email or password.')
     expect(page).to_not have_content('Welcome Back!')
     expect(page).to_not have_content('Sign Out')
-    expect(page).to_not have_content('Home')
+    expect(page).to_not have_content('My Account')
     expect(page).to_not have_content('Your Account Info')
   end
   scenario 'a exisiting email with the wrong password is denied access' do
@@ -51,7 +51,7 @@ feature 'user signs in', %Q{
     click_button 'Sign In'
 
     expect(page).to have_content('Sign Out')
-    expect(page).to have_content('Home')
+    expect(page).to have_content('My Account')
     expect(page).to_not have_content('Sign In')
 
     visit new_user_session_path
@@ -68,7 +68,7 @@ feature 'user signs in', %Q{
     expect(page).to have_content('Welcome Back!')
     expect(page).to have_content('Sign Out')
     expect(page).to have_content('Admin')
-    expect(page).to have_content('Home')
+    expect(page).to have_content('My Account')
     expect(page).to have_content('Your Account Info')
   end
 end
